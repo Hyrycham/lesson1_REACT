@@ -4,8 +4,8 @@ ul {
     align-items: center;
     background-color: blue;
     list-style: none;
-
-};
+    height: 100px;
+}
 .target{
     background-color: silver;
 }

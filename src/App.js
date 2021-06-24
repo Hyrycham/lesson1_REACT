@@ -9,10 +9,12 @@ function App() {
       <div>
 
           < Menu  pages={['users page', 'posts page' , 'comments page']}
-                 classes= {['target','point']}
+                 classes= {['tr','point']}
           />
           < Users />
-          < Menu  pages={['about', 'team' , 'contact']}   />
+          < Menu  pages={['about', 'team' , 'contact']}
+                  classes= {['target','point','asd']}
+          />
 
       </div>
   );
