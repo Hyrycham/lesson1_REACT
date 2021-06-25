@@ -1,22 +1,11 @@
-import {useEffect, useState} from "react";
 import Post from '../post/post';
 
-export default function Posts () {
-
-    let [postsArray, setPostsArray]= useState([]);
-
-    useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then(value => value.json())
-            .then(postsFromserver =>{
-                setPostsArray(postsFromserver)   ;
-            });
-    } , [] )
+export default function Posts ({items}) {
 
     return(
         <div>
             {
-                postsArray.map(post => <Post item={post}/>  )
+                items.map(value => <Post item={value}/>  )
 
             }
         </div>
