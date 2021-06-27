@@ -15,6 +15,9 @@ let [user, setUser]=useState(null)
     },[]);
 
 
+
+
+
   return (
       <div>
 
@@ -25,9 +28,8 @@ let [user, setUser]=useState(null)
 <hr/>
 
 
-
-
-              { user && <div> {user.name} {JSON.stringify(user)} </div>}
+          {/*{ user && <div> {user.name} {JSON.stringify(user)} </div>}*/}
+          { (user &&<div> {user.name} {JSON.stringify(user)} </div> ) ||<div> no information </div> }
 
 
 
