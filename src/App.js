@@ -1,11 +1,13 @@
 import './App.css';
  import Users  from './components/users/users';
 import Menu  from './components/menu/menu';
-import {getUsers} from './srvices/API';
+import {getUsers,getUser} from './srvices/API';
 import {useEffect, useState} from "react";
 
 export default App
 function App() {
+let [user, setUser]=useState([])
+    let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
 
     let [users, setUsers]= useState([]);
     useEffect( () => {
@@ -14,22 +16,23 @@ function App() {
 
 
   return (
-
       <div>
 
           < Menu  pages={['users page', 'posts page' , 'comments page']}
-                 classes= {['tr','point']}
-          />
+                 classes= {['tr','point']}  />
 
-<Users items={users}/>
+<Users items={users} appFn={appFn}  />
+<hr/>
+
+          {user && <div> {user.name} {user.id}  </div>}
 
 
           < Menu  pages={['about', 'team' , 'contact']}
-                  classes= {['target','point','asd']}
-          />
+                  classes= {['target','point','asd']} />
 
       </div>
   );
+
 }
 
 
