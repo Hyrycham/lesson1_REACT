@@ -4,7 +4,7 @@ export default function Menu (props) {
     return(
         <div>
             <ul>{
-                pages.map(page => <li className={(classes.join(' '))}>{page}</li>)
+                pages.map((page,index) => <li key={index}  className={(classes.join(' '))}>{page}</li>)
 
 
             }
