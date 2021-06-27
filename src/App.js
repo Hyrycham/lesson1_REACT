@@ -6,7 +6,7 @@ import {useEffect, useState} from "react";
 
 export default App
 function App() {
-let [user, setUser]=useState([])
+let [user, setUser]=useState(null)
     let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
 
     let [users, setUsers]= useState([]);
@@ -24,7 +24,13 @@ let [user, setUser]=useState([])
 <Users items={users} appFn={appFn}  />
 <hr/>
 
-          {user && <div> {user.name} {user.id}  </div>}
+
+
+
+              { user && <div> {user.name} {JSON.stringify(user)} </div>}
+
+
+
 
 
           < Menu  pages={['about', 'team' , 'contact']}
