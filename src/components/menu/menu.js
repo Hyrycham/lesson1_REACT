@@ -5,13 +5,8 @@ export default function Menu (props) {
         <div>
             <ul>{
                 pages.map((page,index) => <li key={index}  className={(classes.join(' '))}>{page}</li>)
-
-
             }
             </ul>
-
-
-
         </div>
     )
 }

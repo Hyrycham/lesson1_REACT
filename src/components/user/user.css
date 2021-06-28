@@ -1,0 +1,35 @@
+.userCard {
+    background-color: orange;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: solid 1px darkblue;
+    box-sizing: border-box;
+    margin-bottom:2px ;
+    width: 250px;
+}
+.center_center{
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    text-align: center;
+    margin: 5px ;
+}
+button{
+    height: 100%;
+    width: 100%;
+}
+.btn{
+    display: flex;
+    height: 50px;
+    }
+.InfUser{
+    width: 160px;
+}
+.InfPosts{
+    width: 175px;
+}
+.nameUser{
+    height: 20px;
+    width: 200px;
+}

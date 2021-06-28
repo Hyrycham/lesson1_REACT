@@ -2,9 +2,9 @@ import './post.css'
 export default function Post ({item}) {
        return (
         <div>
+            <div className={'itemTitle'}><b>Title:</b> {item.title}  </div>
+            <div className={'itemBody'}> <b>Posts body:</b> {item.body}  </div>
 
-            <div className={'itemBody'}>  {item.body}  </div>
-           <div className={'itemTitle'}>  {item.title}  </div>
         </div>
     )
 }

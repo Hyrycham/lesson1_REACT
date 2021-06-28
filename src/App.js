@@ -1,16 +1,18 @@
 import './App.css';
- import Users  from './components/users/users';
+import Users  from './components/users/users';
 import Menu  from './components/menu/menu';
 import {getUsers,getUser,getPost} from './srvices/API';
 import {useEffect, useState} from "react";
+import Posts from "./components/posts/posts";
 
 export default App
 function App() {
-let [user, setUser]=useState(null);
-    let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
 
-    let [post, setPost]=useState(null);
-    let appFnPost = (id) => {getPost(id).then(value => setPost(value))};
+let [user, setUser]=useState(null);
+let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
+
+    let [post, setPost]=useState([]);
+    let appFnPost = (id) => {getPost(id).then(value => setPost(value.data))};
 
 
     let [users, setUsers]= useState([]);
@@ -21,16 +23,27 @@ let [user, setUser]=useState(null);
   return (
       <div>
 
-          < Menu  pages={['users page', 'posts page' , 'comments page']}
+          < Menu  pages={['Users', 'Posts' , 'Comments']}
                  classes= {['tr','point']}  />
+<div className={'wrap'}>
+<div className={'itemUsers centr_centr'}>
+    <Users items={users} appFn={appFn}  appFnPost={appFnPost} />
+</div>
 
-<Users items={users} appFn={appFn}  />
-<hr/>
-          {/*{ user && <div> {user.name} {JSON.stringify(user)} </div>}*/}
-          { (user &&<div> {user.name} {JSON.stringify(user)} </div> ) ||<div> no information </div> }
+    <div className={'usersInfo centr_centr'}>
+           { (user &&<div> {user.username} {JSON.stringify(user)} </div> ) ||<div> no information </div> }
+    </div>
 
-          < Menu  pages={['about', 'team' , 'contact']}
-                  classes= {['target','point','asd']} />
+    <div className={'usersPosts centr_centr'}>
+        <Posts items={post}  />
+    </div>
+
+
+</div>
+
+
+          < Menu  pages={['About', 'Team' , 'Contact']}
+                  classes= {['target','point']} />
       </div>
   );
 

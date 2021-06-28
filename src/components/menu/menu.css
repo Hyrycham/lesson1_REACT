@@ -1,13 +1,18 @@
 ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     background-color: blue;
     list-style: none;
-    height: 100px;
-    color: orange;
+    height: 50px;
+    margin: 5px;
+    padding: 5px;
+    font-size: 20px;
 }
 .target{
-    background-color: silver;
+    color: cornflowerblue;
 
 }
+.tr{
+    color: orange;
+   }

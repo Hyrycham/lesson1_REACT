@@ -2,7 +2,9 @@
 
 .itemBody{
     background-color: silver;
+    padding: 3px;
 }
 .itemTitle{
     background-color: orange;
+    padding: 5px;
 }
