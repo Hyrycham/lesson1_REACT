@@ -1,6 +1,6 @@
 import Post from '../post/post';
 
-export default function Posts ({items}) {
+export default function Posts ({items }) {
 
     return(
         <div>

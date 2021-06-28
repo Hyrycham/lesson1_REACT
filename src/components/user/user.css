@@ -6,14 +6,14 @@
     border: solid 1px darkblue;
     box-sizing: border-box;
     margin-bottom:2px ;
-    width: 250px;
+    width: 220px;
 }
 .center_center{
     justify-content: center;
     align-items: center;
     padding: 5px;
     text-align: center;
-    margin: 5px ;
+    margin: 3px ;
 }
 button{
     height: 100%;

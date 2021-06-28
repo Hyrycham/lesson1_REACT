@@ -23,19 +23,36 @@ let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
   return (
       <div>
 
-          < Menu  pages={['Users', 'Posts' , 'Comments']}
+          < Menu  pages={['Users', 'Info' , 'Posts']}
                  classes= {['tr','point']}  />
 <div className={'wrap'}>
 <div className={'itemUsers CenT'}>
     <Users items={users} appFn={appFn}  appFnPost={appFnPost} />
+
 </div>
 
-    <div className={'usersInfo CenT'}>
-           { (user &&<div> {user.username} {JSON.stringify(user)} </div> ) ||<div> no information </div> }
+    <div className={'usersInfo CenT'} >
+
+<div  className={'fixDiv'}>
+    { (user &&<div> {user.name} {JSON.stringify(user)} </div> ) ||<div> no information </div> }
+</div>
+
+
     </div>
 
-    <div className={'usersPosts CenT'}>
-        <Posts items={post}  />
+    <div className={'usersPosts CenT '}>
+
+        { ( post[0] && <div> Posts of USER :{users[post[0].userId-1].name} </div> ) || <div> no information </div> }
+        { ( post[0] && <div> with ID:{post[0].userId} </div> ) || <div> no information </div> }
+
+
+        <div >
+
+
+            <Posts items={post}  />
+        </div>
+
+
     </div>
 
 

@@ -35,6 +35,7 @@
 .wrap{
 display: flex;
 
+
 }
 .CenT{
 justify-content: center;
@@ -45,11 +46,18 @@ justify-content: center;
     background-color: darkcyan;
 }
 .usersInfo{
-    width: 30%;
+    width: 40%;
     background-color: lightgrey;
     padding: 5px;
+     }
+.fixDiv{
+    position: fixed;
+        overflow: hidden;
+    width: 40%;
 }
+
 .usersPosts{
-    width: 45%;
+    width: 35%;
     padding: 0;
+    background-color: silver;
 }
