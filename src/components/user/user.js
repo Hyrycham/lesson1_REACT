@@ -1,9 +1,5 @@
 import  './user.css'
-
 export default function User ({item , fnFather, fnFatherPost}) {
-
-
-
         return(
         <div className={'userCard center_center'}>
 
@@ -14,8 +10,6 @@ export default function User ({item , fnFather, fnFatherPost}) {
             <div className={'btn  InfPosts center_center'}> <button className={'btnInfPosts'} onClick={()=> fnFatherPost(item.id)}>Get ALL POSTS of User: {item.name}</button> </div>
         </div>
     )
-
-
 }
 
 

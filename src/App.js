@@ -45,16 +45,12 @@ let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
         { ( post[0] && <div> Posts of USER :{users[post[0].userId-1].name} </div> ) || <div> no information </div> }
         { ( post[0] && <div> with ID:{post[0].userId} </div> ) || <div> no information </div> }
 
-
         <div >
-
 
             <Posts items={post}  />
         </div>
 
-
     </div>
-
 
 </div>
 

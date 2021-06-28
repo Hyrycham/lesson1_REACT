@@ -34,22 +34,24 @@
 /*}*/
 .wrap{
 display: flex;
-
-
 }
+
 .CenT{
 justify-content: center;
     align-items: center;
 }
+
 .itemUsers{
     width: 25%;
     background-color: darkcyan;
 }
+
 .usersInfo{
     width: 40%;
     background-color: lightgrey;
     padding: 5px;
      }
+
 .fixDiv{
     position: fixed;
         overflow: hidden;
