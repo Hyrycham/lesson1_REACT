@@ -26,15 +26,15 @@ let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
           < Menu  pages={['Users', 'Posts' , 'Comments']}
                  classes= {['tr','point']}  />
 <div className={'wrap'}>
-<div className={'itemUsers centrcentr'}>
+<div className={'itemUsers CenT'}>
     <Users items={users} appFn={appFn}  appFnPost={appFnPost} />
 </div>
 
-    <div className={'usersInfo centrcentr'}>
+    <div className={'usersInfo CenT'}>
            { (user &&<div> {user.username} {JSON.stringify(user)} </div> ) ||<div> no information </div> }
     </div>
 
-    <div className={'usersPosts centrcentr'}>
+    <div className={'usersPosts CenT'}>
         <Posts items={post}  />
     </div>
 
