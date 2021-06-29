@@ -9,10 +9,6 @@ import Comments from "./components/comments/comments";
 export default App
 function App() {
 
-
-
-
-
 let [user, setUser]=useState(null);
 let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
 
@@ -23,30 +19,42 @@ let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
     let  appFnComments = (id) => {getComments(id).then(value => setComments(value.data))};
 
 
+
     let [users, setUsers]= useState([]);
     useEffect( () => {
         getUsers().then(value => setUsers(value.data));
     },[]);
 
-  return (
+           let [show, setShow]=useState(['showOn','showOff']);
+      function appShow (s,t) {s=setShow([s,t])
+          return s
+};
+    return (
       <div>
 
           < Menu  pages={['Users', 'Info' , 'Posts']}
                  classes= {['tr','point']}  />
 <div className={'wrap'}>
+
 <div className={'itemUsers CenT'}>
-    <Users items={users} appFn={appFn}  appFnPost={appFnPost} />
+    <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow} />
 
 </div>
 
     <div className={'usersInfo CenT'} >
 
-<div  className={'fixDiv'}>
+
+<div  className={'fixDiv '+show[0]}>
     { (user &&<div> {user.name} {JSON.stringify(user)} </div> ) ||<div> no information </div> }
 </div>
 
+        <div className={'fixDiv '+ show[1] }>
+            <Comments items={comments}  />
+        </div>
 
     </div>
+
+
 
     <div className={'usersPosts CenT '}>
 
@@ -55,10 +63,8 @@ let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
 
         <div >
 
-            <Posts items={post} appFnComments={appFnComments}  />
-            <div>
-                <Comments items={comments}/>
-            </div>
+            <Posts items={post} appFnComments={appFnComments} appsh={appShow} />
+
 
 
 

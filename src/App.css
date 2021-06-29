@@ -51,15 +51,21 @@ justify-content: center;
     background-color: lightgrey;
     padding: 5px;
      }
-
-.fixDiv{
-    position: fixed;
-        overflow: hidden;
-    width: 40%;
-}
-
 .usersPosts{
     width: 35%;
     padding: 0;
     background-color: silver;
+}
+
+.fixDiv{
+    position: fixed;
+    overflow: hidden;
+    width: 40%;
+}
+.showOn{
+    display: block;
+}
+
+.showOff{
+    display:none ;
 }
