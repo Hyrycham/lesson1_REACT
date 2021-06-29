@@ -1,21 +1,11 @@
-import {useEffect, useState} from "react";
-import Comment from '../comments/comment';
-export default function Comments () {
 
-    let [commentsArray, setCommentsArray]= useState([]);
-
-    useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/comments')
-            .then(value => value.json())
-            .then(commentsFromserver =>{
-                setCommentsArray(commentsFromserver)   ;
-            });
-    } , [] )
+import Comment from '../comment/comment';
+export default function Comments ({items}) {
 
     return(
         <div>
             {
-                commentsArray.map(comment => <Comment item={comment}/>  )
+                items.map(value => <Comment key={value.id} item={value}/>  )
             }
         </div>
     )

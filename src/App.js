@@ -1,18 +1,26 @@
 import './App.css';
 import Users  from './components/users/users';
 import Menu  from './components/menu/menu';
-import {getUsers,getUser,getPost} from './srvices/API';
+import {getUsers, getUser, getPost, getComments} from './srvices/API';
 import {useEffect, useState} from "react";
 import Posts from "./components/posts/posts";
+import Comments from "./components/comments/comments";
 
 export default App
 function App() {
+
+
+
+
 
 let [user, setUser]=useState(null);
 let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
 
     let [post, setPost]=useState([]);
     let appFnPost = (id) => {getPost(id).then(value => setPost(value.data))};
+
+    let [comments, setComments]=useState([]);
+    let  appFnComments = (id) => {getComments(id).then(value => setComments(value.data))};
 
 
     let [users, setUsers]= useState([]);
@@ -47,8 +55,16 @@ let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
 
         <div >
 
-            <Posts items={post}  />
+            <Posts items={post} appFnComments={appFnComments}  />
+            <div>
+                <Comments items={comments}/>
+            </div>
+
+
+
         </div>
+
+
 
     </div>
 
