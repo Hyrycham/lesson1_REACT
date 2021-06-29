@@ -28,7 +28,7 @@ let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
            let [show, setShow]=useState(['showOn','showOff']);
       function appShow (s,t) {s=setShow([s,t])
           return s
-};
+}
     return (
       <div>
 
