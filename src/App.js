@@ -5,30 +5,45 @@ import {getUsers, getUser, getPost, getComments} from './srvices/API';
 import {useEffect, useState} from "react";
 import Posts from "./components/posts/posts";
 import Comments from "./components/comments/comments";
+import Reducer from './components/reducer/reducer';
+import {useReducer} from "react";
+
 
 export default App
 function App() {
+// let [state,dispatch]=useReducer(Reducer,{a:0,b:0})
+//    ------------------------------------------
+    let [user, setUser]=useState(null);
+    let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
 
-let [user, setUser]=useState(null);
-let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
 
+
+
+
+    //---------------------------------------------------
     let [post, setPost]=useState([]);
     let appFnPost = (id) => {getPost(id).then(value => setPost(value.data))};
-
+//---------------------------------------------------
     let [comments, setComments]=useState([]);
     let  appFnComments = (id) => {getComments(id).then(value => setComments(value.data))};
+//     let [comments, appFnComments]=useReducer(Reducer,[])
+// console.log(JSON.stringify(appFnComments))
 
 
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // let [show, setShow]=useState(['showOn','showOff']);
+    // let   appShow = (s,t) => {s=setShow([s,t])}
+    // function appShow (s,t) {s=setShow([s,t]);  return s}
+    let   [show,appShow]= useReducer(Reducer,['showOn','showOff'])
+//++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     let [users, setUsers]= useState([]);
     useEffect( () => {
         getUsers().then(value => setUsers(value.data));
     },[]);
+//===========================================================
 
-           let [show, setShow]=useState(['showOn','showOff']);
-      function appShow (s,t) {s=setShow([s,t])
-          return s
-}
+
     return (
       <div>
 
