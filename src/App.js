@@ -25,9 +25,12 @@ function App() {
     let appFnPost = (id) => {getPost(id).then(value => setPost(value.data))};
 //---------------------------------------------------
     let [comments, setComments]=useState([]);
-    let  appFnComments = (id) => {getComments(id).then(value => setComments(value.data))};
-//     let [comments, appFnComments]=useReducer(Reducer,[])
-// console.log(JSON.stringify(appFnComments))
+    let  appFnComments = (id)  =>{getComments(id).then(value => setComments(value.data))};
+
+    // let  appFnComments = (id)  =>{getComments(id).then(value => useReducer(Reducer,value.data)};
+
+    // let [comments, appFnComments]=useReducer(Reducer,['A','B'])
+
 
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++
