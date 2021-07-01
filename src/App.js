@@ -27,16 +27,11 @@ function App() {
     let [comments, setComments]=useState([]);
     let  appFnComments = (id)  =>{getComments(id).then(value => setComments(value.data))};
 
-    // let  appFnComments = (id)  =>{getComments(id).then(value => useReducer(Reducer,value.data)};
-
-    // let [comments, appFnComments]=useReducer(Reducer,['A','B'])
-
-
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++
     // let [show, setShow]=useState(['showOn','showOff']);
     // let   appShow = (s,t) => {s=setShow([s,t])}
-    // function appShow (s,t) {s=setShow([s,t]);  return s}
+
     let   [show,appShow]= useReducer(Reducer,['showOn','showOff'])
 //++++++++++++++++++++++++++++++++++++++++++++++++++++
 
