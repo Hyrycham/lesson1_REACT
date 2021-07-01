@@ -7,7 +7,7 @@ import Posts from "./components/posts/posts";
 import Comments from "./components/comments/comments";
 import Reducer from './components/reducer/reducer';
 import {useReducer} from "react";
-
+import {BrowserRouter as Router, Link,Route,Switch} from 'react-router-dom'
 
 export default App
 function App() {
@@ -43,26 +43,50 @@ function App() {
 
 
     return (
+        <Router>
+
       <div>
 
           < Menu  pages={['Users', 'Info' , 'Posts']}
                  classes= {['tr','point']}  />
 <div className={'wrap'}>
 
-<div className={'itemUsers CenT'}>
-    <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow} />
+    <Route path={'/users'} render={()=><div className={'itemUsers CenT'}>
+        <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow} />
 
-</div>
+    </div>} />
 
     <div className={'usersInfo CenT'} >
 
+        <div>
 
+            <Link  to={'/users'}> to users page</Link>
+            <br/>
+            <Link  to={'/posts'}> to posts page</Link>
+            <br/>
+            <Link  to={'/comments'}> to comments page</Link>
+            <br/>
+            <Link  to={'/'}> to HOME page</Link>
+            <br/>
+            <Switch>
+            <Route path={'/users'} render={()=><div>this is user page</div>} />
+            {/*<Route path={'/posts'} component= {} />*/}
+            <Route path={'/comments'} >
+                    <Comments items={comments}  />
+                </Route>
+            <Route exact path={'/'} render={()=><div>this is HOME page</div>} />
+        </Switch>
+
+        </div>
+
+
+  ----------------------------------------
 <div  className={'fixDiv '+show[0]}>
     { (user &&<div> {user.name} {JSON.stringify(user)} </div> ) ||<div> no information </div> }
 </div>
 
         <div className={'fixDiv '+ show[1] }>
-            <Comments items={comments}  />
+            {/*<Comments items={comments}  />*/}
         </div>
 
     </div>
@@ -93,7 +117,8 @@ function App() {
           < Menu  pages={['About', 'Team' , 'Contact']}
                   classes= {['target','point']} />
       </div>
-  );
+</Router>
+    );
 
 }
 
