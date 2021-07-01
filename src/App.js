@@ -51,10 +51,16 @@ function App() {
                  classes= {['tr','point']}  />
 <div className={'wrap'}>
 
-    <Route path={'/users'} render={()=><div className={'itemUsers CenT'}>
-        <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow} />
+    {/*<Route path={'/users'} render={()=><div className={'itemUsers CenT'}>*/}
+    {/*    <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow} />*/}
 
-    </div>} />
+    {/*</div>} />*/}
+
+    <div className={'itemUsers CenT'}>
+        {/*<Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow} />*/}
+
+    </div>
+
 
     <div className={'usersInfo CenT'} >
 
@@ -69,12 +75,32 @@ function App() {
             <Link  to={'/'}> to HOME page</Link>
             <br/>
             <Switch>
-            <Route path={'/users'} render={()=><div>this is user page</div>} />
+
+                <Route path={'/users'} render={()=><div className={'itemUsers CenT'}>
+                    <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow} />
+
+                </div>} />
+
+
+                <Route path={'/posts'} render={()=> <div className={'usersPosts CenT '}>
+                    { ( post[0] && <div> Posts of USER :{users[post[0].userId-1].name} </div> ) || <div> no information </div> }
+                    { ( post[0] && <div> with ID:{post[0].userId} </div> ) || <div> no information </div> }
+                    <div >
+                        <Posts items={post} appFnComments={appFnComments} appsh={appShow} />
+                    </div>
+
+
+                </div>} />
+
+
             {/*<Route path={'/posts'} component= {} />*/}
+
+
+
             <Route path={'/comments'} >
                     <Comments items={comments}  />
                 </Route>
-            <Route exact path={'/'} render={()=><div>this is HOME page</div>} />
+            <Route  path={'/'} render={()=><div>this is HOME page</div>} />
         </Switch>
 
         </div>
@@ -85,31 +111,24 @@ function App() {
     { (user &&<div> {user.name} {JSON.stringify(user)} </div> ) ||<div> no information </div> }
 </div>
 
-        <div className={'fixDiv '+ show[1] }>
-            {/*<Comments items={comments}  />*/}
-        </div>
+        {/*<div className={'fixDiv '+ show[1] }>*/}
+        {/*    <Comments items={comments}  />*/}
+        {/*</div>*/}
 
     </div>
 
 
 
-    <div className={'usersPosts CenT '}>
-
-        { ( post[0] && <div> Posts of USER :{users[post[0].userId-1].name} </div> ) || <div> no information </div> }
-        { ( post[0] && <div> with ID:{post[0].userId} </div> ) || <div> no information </div> }
-
-        <div >
-
-            <Posts items={post} appFnComments={appFnComments} appsh={appShow} />
+    {/*<div className={'usersPosts CenT '}>*/}
+    {/*    { ( post[0] && <div> Posts of USER :{users[post[0].userId-1].name} </div> ) || <div> no information </div> }*/}
+    {/*    { ( post[0] && <div> with ID:{post[0].userId} </div> ) || <div> no information </div> }*/}
+    {/*    <div >*/}
+    {/*        <Posts items={post} appFnComments={appFnComments} appsh={appShow} />*/}
+    {/*  </div>*/}
 
 
 
-
-        </div>
-
-
-
-    </div>
+    {/*</div>*/}
 
 </div>
 
