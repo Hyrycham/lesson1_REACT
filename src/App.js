@@ -16,10 +16,6 @@ function App() {
     let [user, setUser]=useState(null);
     let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
 
-
-
-
-
     //---------------------------------------------------
     let [post, setPost]=useState([]);
     let appFnPost = (id) => {getPost(id).then(value => setPost(value.data))};
@@ -40,7 +36,7 @@ function App() {
         getUsers().then(value => setUsers(value.data));
     },[]);
 //===========================================================
-let appShowBtn=['showOn','showOn'];
+// let appShowBtn=['showOn','showOn'];
     //================================
     return (
         <Router>
@@ -73,7 +69,7 @@ let appShowBtn=['showOn','showOn'];
                         { (user &&<div> {user.name} {JSON.stringify(user)} </div> ) ||<div> no information </div> }
                     </div>
                 </div>
-                {/*<div className={'usersPosts CenT '}>     </div>*/}
+
             </div>}
         />
 
@@ -87,7 +83,7 @@ let appShowBtn=['showOn','showOn'];
            { ( post[0] && <div> Posts of USER :{users[post[0].userId-1].name} </div> ) || <div> no information </div> }
             { ( post[0] && <div> with ID:{post[0].userId} </div> ) || <div> no information </div> }
             <div >
-                <Posts items={post} appFnComments={appFnComments} appsh={appShow} appShowBtn={['showOff','']}  />
+                <Posts items={post} appFnComments={appFnComments} appSh={appShow} appShowBtn={['showOff','']}  />
             </div>
             </div>
         </div>}
@@ -107,7 +103,7 @@ let appShowBtn=['showOn','showOn'];
                 { ( post[0] && <div> Posts of USER :{users[post[0].userId-1].name} </div> ) || <div> no information </div> }
                 { ( post[0] && <div> with ID:{post[0].userId} </div> ) || <div> no information </div> }
                 <div >
-                    <Posts items={post} appFnComments={appFnComments} appsh={appShow} appShowBtn={['showOn','']} />
+                    <Posts items={post} appFnComments={appFnComments} appSh={appShow} appShowBtn={['showOn','']} />
                 </div>
             </div>
 
