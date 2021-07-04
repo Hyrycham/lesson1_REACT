@@ -40,8 +40,8 @@ function App() {
         getUsers().then(value => setUsers(value.data));
     },[]);
 //===========================================================
-
-
+let appShowBtn=['showOn','showOn'];
+    //================================
     return (
         <Router>
 
@@ -66,7 +66,7 @@ function App() {
         <Route path={'/users'} render={()=>
             <div className={'wrap'}>
             <div className={'itemUsers CenT'}>
-            <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow} />
+            <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow}  appShowBtn={['showOn','showOff']} />
         </div>
                 <div className={'usersInfo CenT'} >
                     <div  className={'fixDiv70 '+show[0]}>
@@ -81,13 +81,13 @@ function App() {
         <Route path={'/posts'} render={()=>
             <div className={'wrap'}>
                 <div className={'itemUsers CenT '}>
-                    <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow} />
+                    <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow} appShowBtn={['showOff','showOn']}   />
                 </div>
                  <div className={'usersPostsFull CenT'}>
            { ( post[0] && <div> Posts of USER :{users[post[0].userId-1].name} </div> ) || <div> no information </div> }
             { ( post[0] && <div> with ID:{post[0].userId} </div> ) || <div> no information </div> }
             <div >
-                <Posts items={post} appFnComments={appFnComments} appsh={appShow} />
+                <Posts items={post} appFnComments={appFnComments} appsh={appShow} appShowBtn={['showOff','']}  />
             </div>
             </div>
         </div>}
@@ -96,7 +96,7 @@ function App() {
     <Route path={'/comments'} >
         <div className={'wrap'}>
             <div className={'itemUsers CenT'}>
-                <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow} />
+                <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow}  appShowBtn={['showOff','showOn']}/>
             </div>
             <div className={'usersInfo CenT'} >
         <div className={'fixDiv40 '+ show[1] }>
@@ -107,7 +107,7 @@ function App() {
                 { ( post[0] && <div> Posts of USER :{users[post[0].userId-1].name} </div> ) || <div> no information </div> }
                 { ( post[0] && <div> with ID:{post[0].userId} </div> ) || <div> no information </div> }
                 <div >
-                    <Posts items={post} appFnComments={appFnComments} appsh={appShow} />
+                    <Posts items={post} appFnComments={appFnComments} appsh={appShow} appShowBtn={['showOn','']} />
                 </div>
             </div>
 
