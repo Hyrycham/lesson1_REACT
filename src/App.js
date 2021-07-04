@@ -51,15 +51,16 @@ function App() {
                  classes= {['tr','point']}  />
 <div className={'wrap'}>
 
-    {/*<Route path={'/users'} render={()=><div className={'itemUsers CenT'}>*/}
-    {/*    <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow} />*/}
-
-    {/*</div>} />*/}
 
     <div className={'itemUsers CenT'}>
-        <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow} />
 
+        <Route path={'/users'} render={()=> <div className={'itemUsers CenT'}>
+            <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow} />
+
+        </div>} />
     </div>
+
+
 
 
     <div className={'usersInfo CenT'} >
@@ -83,33 +84,20 @@ function App() {
                     </div>
                 </div>} />
 
-
-
-
             <Route path={'/comments'} >
                 <div className={'fixDiv '+ show[1] }>
                     <Comments items={comments}  />
                 </div>
                 </Route>
 
-
-            <Route  path={'/'} render={()=><div>this is HOME page</div>} />
-
+            <Route exact path={'/'} render={()=><div>this is HOME page</div>} />
 
         </Switch>
 
 
         </div>
 
-        {/*<div  className={'fixDiv '+show[0]}>*/}
-        {/*    { (user &&<div> {user.name} {JSON.stringify(user)} </div> ) ||<div> no information </div> }*/}
-        {/*</div>*/}
   ----------------------------------------
-
-
-        {/*<div className={'fixDiv '+ show[1] }>*/}
-        {/*    <Comments items={comments}  />*/}
-        {/*</div>*/}
 
     </div>
 
@@ -121,7 +109,7 @@ function App() {
         </div>
     </div>} />
 
-
+    <div className={'usersPosts CenT '}> </div>
 
 </div>
 
