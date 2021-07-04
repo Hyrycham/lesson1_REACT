@@ -47,21 +47,32 @@ justify-content: center;
 }
 
 .usersInfo{
-    width: 40%;
+    width: 100%;
     background-color: lightgrey;
     padding: 5px;
      }
+
 .usersPosts{
-    width: 35%;
+    width: 100%;
     padding: 0;
     background-color: silver;
 }
 
-.fixDiv{
+.fixDiv70{
+    position: fixed;
+       /*overflow: hidden;*/
+    width: 70%;
+}
+
+.fixDiv40{
     position: fixed;
     overflow: hidden;
     width: 40%;
 }
+
+
+
+
 .showOn{
     display: block;
 }

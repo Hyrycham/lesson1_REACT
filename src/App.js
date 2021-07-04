@@ -69,11 +69,11 @@ function App() {
             <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow} />
         </div>
                 <div className={'usersInfo CenT'} >
-                    <div  className={'fixDiv '+show[0]}>
+                    <div  className={'fixDiv70 '+show[0]}>
                         { (user &&<div> {user.name} {JSON.stringify(user)} </div> ) ||<div> no information </div> }
                     </div>
                 </div>
-                <div className={'usersPosts CenT '}>     </div>
+                {/*<div className={'usersPosts CenT '}>     </div>*/}
             </div>}
         />
 
@@ -99,7 +99,7 @@ function App() {
                 <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow} />
             </div>
             <div className={'usersInfo CenT'} >
-        <div className={'fixDiv '+ show[1] }>
+        <div className={'fixDiv40 '+ show[1] }>
             <Comments items={comments}  />
         </div>
             </div>
