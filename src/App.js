@@ -11,7 +11,7 @@ import {BrowserRouter as Router, Link,Route,Switch} from 'react-router-dom'
 
 export default App
 function App() {
-// let [state,dispatch]=useReducer(Reducer,{a:0,b:0})
+
 //    ------------------------------------------
     let [user, setUser]=useState(null);
     let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
@@ -47,7 +47,7 @@ function App() {
 
       <div>
 
-          < Menu  pages={['Users', 'Info' , 'Posts']}
+          < Menu  pages={['Main', 'Info' , 'Call']}
                  classes= {['tr','point']}  />
 <div className={'wrap'}>
 
@@ -57,7 +57,7 @@ function App() {
     {/*</div>} />*/}
 
     <div className={'itemUsers CenT'}>
-        {/*<Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow} />*/}
+        <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow} />
 
     </div>
 
@@ -77,39 +77,35 @@ function App() {
             <Switch>
 
                 <Route path={'/users'} render={()=><div className={'itemUsers CenT'}>
-                    <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow} />
 
-                </div>} />
-
-
-                <Route path={'/posts'} render={()=> <div className={'usersPosts CenT '}>
-                    { ( post[0] && <div> Posts of USER :{users[post[0].userId-1].name} </div> ) || <div> no information </div> }
-                    { ( post[0] && <div> with ID:{post[0].userId} </div> ) || <div> no information </div> }
-                    <div >
-                        <Posts items={post} appFnComments={appFnComments} appsh={appShow} />
+                    <div  className={'fixDiv '+show[0]}>
+                        { (user &&<div> {user.name} {JSON.stringify(user)} </div> ) ||<div> no information </div> }
                     </div>
-
-
                 </div>} />
 
-
-            {/*<Route path={'/posts'} component= {} />*/}
 
 
 
             <Route path={'/comments'} >
+                <div className={'fixDiv '+ show[1] }>
                     <Comments items={comments}  />
+                </div>
                 </Route>
+
+
             <Route  path={'/'} render={()=><div>this is HOME page</div>} />
+
+
         </Switch>
+
 
         </div>
 
-
+        {/*<div  className={'fixDiv '+show[0]}>*/}
+        {/*    { (user &&<div> {user.name} {JSON.stringify(user)} </div> ) ||<div> no information </div> }*/}
+        {/*</div>*/}
   ----------------------------------------
-<div  className={'fixDiv '+show[0]}>
-    { (user &&<div> {user.name} {JSON.stringify(user)} </div> ) ||<div> no information </div> }
-</div>
+
 
         {/*<div className={'fixDiv '+ show[1] }>*/}
         {/*    <Comments items={comments}  />*/}
@@ -117,18 +113,15 @@ function App() {
 
     </div>
 
+    <Route path={'/posts'} render={()=> <div className={'usersPosts CenT '}>
+        { ( post[0] && <div> Posts of USER :{users[post[0].userId-1].name} </div> ) || <div> no information </div> }
+        { ( post[0] && <div> with ID:{post[0].userId} </div> ) || <div> no information </div> }
+        <div >
+            <Posts items={post} appFnComments={appFnComments} appsh={appShow} />
+        </div>
+    </div>} />
 
 
-    {/*<div className={'usersPosts CenT '}>*/}
-    {/*    { ( post[0] && <div> Posts of USER :{users[post[0].userId-1].name} </div> ) || <div> no information </div> }*/}
-    {/*    { ( post[0] && <div> with ID:{post[0].userId} </div> ) || <div> no information </div> }*/}
-    {/*    <div >*/}
-    {/*        <Posts items={post} appFnComments={appFnComments} appsh={appShow} />*/}
-    {/*  </div>*/}
-
-
-
-    {/*</div>*/}
 
 </div>
 
