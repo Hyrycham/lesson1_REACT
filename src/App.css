@@ -69,3 +69,8 @@ justify-content: center;
 .showOff{
     display:none ;
 }
+.usersPostsFull{
+    width: 100%;
+    padding: 1px ;
+    background-color: silver;
+}
