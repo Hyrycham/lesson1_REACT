@@ -46,15 +46,15 @@ function App() {
           < Menu  pages={['Main', 'Info' , 'Call']}
                  classes= {['tr','point']}  />
 
-          <div>
-              <Link  to={'/users'}> to users page</Link>
-              <br/>
-              <Link  to={'/posts'}> to posts page</Link>
-              <br/>
-              <Link  to={'/comments'}> to comments page</Link>
-              <br/>
-              <Link  to={'/'}> to HOME page</Link>
-              <br/>
+          <div className={'GOTo CenT WrapColumn'}>
+              <Link  to={'/users'}>go to users page</Link>
+
+              <Link  to={'/posts'}>go to posts page</Link>
+
+              <Link  to={'/comments'}>go to comments page</Link>
+
+              <Link  to={'/'}>go to HOME page</Link>
+
           </div>
 
           <Switch>
@@ -110,7 +110,7 @@ function App() {
         </div>
     </Route>
 
-    <Route exact path={'/'} render={()=><div>this is HOME page</div>} />
+    <Route exact path={'/'} render={()=><div className={'linkHome wrap CenT'}>This is HOME page</div>} />
      </Switch>
 
           < Menu  pages={['About', 'Team' , 'Contact']}

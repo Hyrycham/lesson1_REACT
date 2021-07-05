@@ -36,6 +36,11 @@
 display: flex;
 }
 
+.WrapColumn{
+    display: flex;
+    flex-direction: column;
+}
+
 .CenT{
 justify-content: center;
     align-items: center;
@@ -70,9 +75,6 @@ justify-content: center;
     width: 40%;
 }
 
-
-
-
 .showOn{
     display: block;
 }
@@ -84,4 +86,15 @@ justify-content: center;
     width: 100%;
     padding: 1px ;
     background-color: silver;
+}
+.GOTo{
+    background-color: darkseagreen;
+    font-size: large;
+    }
+.linkHome{
+    font-size: 30px;
+   text-align: center;
+    color: darkblue;
+    background-color: darkorange;
+    height: 200px;
 }
