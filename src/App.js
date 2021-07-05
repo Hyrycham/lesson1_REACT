@@ -59,7 +59,28 @@ function App() {
 
           <Switch>
 
-        <Route path={'/users'} render={()=>
+              {/*==============================================*/}
+
+              <Route path={'/users/:id'} render={()=>
+                  <div className={'wrap'}>
+                      {/*<div className={'itemUsers CenT'}>*/}
+                      {/*    <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow}  appShowBtn={['showOn','showOff']} />*/}
+                      {/*</div>*/}
+
+
+                      <div className={'usersInfo CenT'} >
+                          {/*<div  className={show[0]}>*/}
+                              <div >
+
+                              {/*{ (user &&<div> {user.name} {user.username} {JSON.stringify(user)} </div> ) ||<div> no information </div> }*/}
+                          </div>
+                      </div>
+                       </div>}
+              />
+          {/*============================*/}
+
+
+              <Route path={'/users'} render={()=>
             <div className={'wrap'}>
             <div className={'itemUsers CenT'}>
             <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow}  appShowBtn={['showOn','showOff']} />
@@ -72,7 +93,6 @@ function App() {
 
             </div>}
         />
-
 
         <Route path={'/posts'} render={()=>
             <div className={'wrap'}>
