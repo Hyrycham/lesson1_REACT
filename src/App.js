@@ -9,6 +9,7 @@ import Reducer from './components/reducer/reducer';
 import {useReducer } from "react";
 import {BrowserRouter as Router, Link,Route,Switch} from 'react-router-dom'
 import AppTest from "./components/testContext/appTest";
+import UserDetails from "./components/userDetails/userDetails";
 
 export default App
 function App() {
@@ -65,17 +66,13 @@ function App() {
 
               {/*==============================================*/}
 
-              <Route path={'/users/:id'} render={()=>
-                  <div className={'wrap'}>
+              <Route path={'/users/:id'} render={(props)=>
 
-                      <div className={'usersInfo CenT'} >
-                          {/*<div  className={show[0]}>*/}
-                              <div >
+                  <UserDetails {...props}/>
 
-                              {/*{ (user &&<div> {user.name} {user.username} {JSON.stringify(user)} </div> ) ||<div> no information </div> }*/}
-                          </div>
-                      </div>
-                       </div>}
+
+
+              }
               />
           {/*============================*/}
 
@@ -133,8 +130,6 @@ function App() {
               <Route  path={'/testContext'} render={()=><div >This is testContext
 
                   <AppTest />
-
-
 
               </div>} />
 

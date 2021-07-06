@@ -10,7 +10,7 @@ export default function User ({item , fnFather, fnFatherPost,fnFatherShow,fnShow
 
             <div className={`btn  InfUser center_center  ${fnShowBtn[0]}`}>  <button className={'btnInfUser'} onClick={()=>{ fnFather (item.id); fnFatherShow({type:'SHOWSWITCH',payload:['showOn','showOff']})} }>Get info about USER: {item.name}</button> </div>
 
-            <div className={`btn  InfUser center_center  ${fnShowBtn[0]}`}>   <Link to={'/users/'+item.id}> User {item.name} Details </Link> </div>
+            <div className={`btn  InfUser center_center  ${fnShowBtn[0]}`}>   <Link to={'/users/'+item.id}> {item.name} Details </Link> </div>
 
             <div className={`btn  InfPosts center_center  ${fnShowBtn[1]}`}> <button className={'btnInfPosts'} onClick={()=> fnFatherPost (item.id)}>Get ALL POSTS of User: {item.name}</button> </div>
         </div>

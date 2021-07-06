@@ -1,4 +1,5 @@
 import User from "../user/user";
+import UserDetails from "../userDetails/userDetails";
 export default function Users ({items, appFn,appFnPost,appFnShow,appShowBtn}) {
 
 
