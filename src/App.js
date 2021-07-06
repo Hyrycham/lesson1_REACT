@@ -6,8 +6,9 @@ import {useEffect, useState} from "react";
 import Posts from "./components/posts/posts";
 import Comments from "./components/comments/comments";
 import Reducer from './components/reducer/reducer';
-import {useReducer} from "react";
+import {useReducer } from "react";
 import {BrowserRouter as Router, Link,Route,Switch} from 'react-router-dom'
+import AppTest from "./components/testContext/appTest";
 
 export default App
 function App() {
@@ -38,7 +39,7 @@ function App() {
 //===========================================================
 // let appShowBtn=['showOn','showOn'];
     //================================
-    return (
+      return (
         <Router>
 
       <div>
@@ -53,7 +54,10 @@ function App() {
 
               <Link  to={'/comments'}>go to comments page</Link>
 
+              <Link  to={'/testContext'}>go to TESTCONTEXT</Link>
+
               <Link  to={'/'}>go to HOME page</Link>
+
 
           </div>
 
@@ -63,10 +67,6 @@ function App() {
 
               <Route path={'/users/:id'} render={()=>
                   <div className={'wrap'}>
-                      {/*<div className={'itemUsers CenT'}>*/}
-                      {/*    <Users items={users} appFn={appFn}  appFnPost={appFnPost}  appFnShow={appShow}  appShowBtn={['showOn','showOff']} />*/}
-                      {/*</div>*/}
-
 
                       <div className={'usersInfo CenT'} >
                           {/*<div  className={show[0]}>*/}
@@ -130,7 +130,17 @@ function App() {
         </div>
     </Route>
 
+              <Route  path={'/testContext'} render={()=><div >This is testContext
+
+                  <AppTest />
+
+
+
+              </div>} />
+
     <Route exact path={'/'} render={()=><div className={'linkHome wrap CenT'}>This is HOME page</div>} />
+
+
      </Switch>
 
           < Menu  pages={['About', 'Team' , 'Contact']}
