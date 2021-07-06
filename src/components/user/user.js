@@ -13,6 +13,8 @@ export default function User ({item , fnFather, fnFatherPost,fnFatherShow,fnShow
 
             <div className={`btn  InfUser center_center linkOneUser   ${fnShowBtn[0]}`}>   <Link className={'btnInfUser center_center '} to={'/users/'+item.id} target="_blank">Get more information about {item.name} </Link> </div>
 
+            <div className={`btn  InfUser center_center linkOneUser   ${fnShowBtn[0]}`}>   <Link className={'btnInfUser center_center '} to={{pathname:'/users_/'+item.id, state:item}} >!THE SECOND OPTION! Get more info about {item.name}</Link> </div>
+
             <div className={`btn  InfPosts center_center  ${fnShowBtn[1]}`}> <button className={'btnInfPosts'} onClick={()=> fnFatherPost (item.id)}>Get ALL POSTS of User: {item.name}</button> </div>
         </div>
     )

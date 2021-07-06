@@ -10,7 +10,7 @@ import {useReducer } from "react";
 import {BrowserRouter as Router, Link,Route,Switch} from 'react-router-dom'
 import AppTest from "./components/testContext/appTest";
 import UserDetails from "./components/userDetails/userDetails";
-
+import UserDetails2 from "./components/userDetails2/userDetails2";
 export default App
 function App() {
 
@@ -64,24 +64,16 @@ function App() {
 
           <Switch>
 
-              {/*==============================================*/}
+              <Route path={'/users_/:id'} component={UserDetails2}/>
 
+              {/*==============================================*/}
               <Route path={'/users/:id'} render={(props)=>
 
                   <div className={'usersPostsFull CenT'}>
                       <UserDetails {...props}/>
-
                   </div>
-
               }
               />
-          {/*============================*/}
-          {/*    <Route path={'/users/:id'} component={UserDetails}/>*/}
-
-
-
-
-{/*============================*/}
 
               <Route path={'/users'} render={()=>
             <div className={'wrap'}>
