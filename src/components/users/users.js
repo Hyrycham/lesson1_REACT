@@ -1,5 +1,4 @@
 import User from "../user/user";
-import UserDetails from "../userDetails/userDetails";
 export default function Users ({items, appFn,appFnPost,appFnShow,appShowBtn}) {
 
 
@@ -10,6 +9,9 @@ export default function Users ({items, appFn,appFnPost,appFnShow,appShowBtn}) {
                 items.map( (value) => <User  key ={value.id} item={value} fnFather={appFn} fnFatherPost={appFnPost} fnFatherShow={appFnShow} fnShowBtn={appShowBtn} /> )
                 // items.map( (value,index) => <User  key ={index} item={value}/> )
 
-            }</div>
+
+            }
+
+        </div>
     )
 }

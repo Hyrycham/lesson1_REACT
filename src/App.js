@@ -68,14 +68,20 @@ function App() {
 
               <Route path={'/users/:id'} render={(props)=>
 
-                  <UserDetails {...props}/>
+                  <div className={'usersPostsFull CenT'}>
+                      <UserDetails {...props}/>
 
-
+                  </div>
 
               }
               />
           {/*============================*/}
+          {/*    <Route path={'/users/:id'} component={UserDetails}/>*/}
 
+
+
+
+{/*============================*/}
 
               <Route path={'/users'} render={()=>
             <div className={'wrap'}>
@@ -84,7 +90,12 @@ function App() {
         </div>
                 <div className={'usersInfo CenT'} >
                     <div  className={'fixDiv70 '+show[0]}>
-                        { (user &&<div> {user.name} {JSON.stringify(user)} </div> ) ||<div> no information </div> }
+                     
+                        {/*{ (user &&<div> {user.name} {JSON.stringify(user)} </div> ) ||<div> no information </div> }*/}
+                        { (user &&<div> name:{user.name}  ID:{user.id} username:{user.username} email:{user.email} </div> ) ||<div> no information </div> }
+
+
+
                     </div>
                 </div>
 

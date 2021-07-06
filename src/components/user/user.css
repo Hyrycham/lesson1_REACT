@@ -19,9 +19,13 @@ button{
     height: 100%;
     width: 100%;
 }
+Link{
+    height: 100%;
+    width: 100%;
+}
 .btn{
+       height: 70px;
     display: flex;
-    height: 50px;
     }
 .InfUser{
     width: 160px;
@@ -38,4 +42,9 @@ button{
 }
 .showOn{
     display: block;
+}
+.linkOneUser{
+    background-color: aquamarine;
+    padding: 2px;
+
 }
