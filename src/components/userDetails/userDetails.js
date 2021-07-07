@@ -1,8 +1,7 @@
 import {useEffect, useState} from "react";
-import {getUser, getUsers} from "../../srvices/API";
+import {getUser} from "../../srvices/API";
 import {useParams} from "react-router-dom"
 export default function UserDetails (props) {
-console.log(props);
     let {id}=useParams();
     let [user, setUser]=useState(null);
        useEffect( () => {

@@ -1,7 +1,6 @@
 import Post from '../post/post';
 
 export default function Posts ({items, appFnComments,appSh,appShowBtn}) {
-
     return(
         <div>
             {

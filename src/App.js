@@ -11,6 +11,7 @@ import {BrowserRouter as Router, Link,Route,Switch} from 'react-router-dom'
 import AppTest from "./components/testContext/appTest";
 import UserDetails from "./components/userDetails/userDetails";
 import UserDetails2 from "./components/userDetails2/userDetails2";
+import PostDetails from "./components/postDetails/postDetails";
 export default App
 function App() {
 
@@ -64,9 +65,19 @@ function App() {
 
           <Switch>
 
+
               <Route path={'/users_/:id'} component={UserDetails2}/>
 
               {/*==============================================*/}
+              <Route path={'/users/:id/allposts'} render={(props)=>
+
+                  <div className={'usersPostsFull CenT'}>
+                      <PostDetails {...props}/>
+                  </div>
+              }
+              />
+              {/*===================================*/}
+
               <Route path={'/users/:id'} render={(props)=>
 
                   <div className={'usersPostsFull CenT'}>
@@ -74,6 +85,7 @@ function App() {
                   </div>
               }
               />
+     {/*__________________________________         */}
 
               <Route path={'/users'} render={()=>
             <div className={'wrap'}>

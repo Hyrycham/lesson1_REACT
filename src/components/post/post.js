@@ -1,5 +1,6 @@
 import './post.css'
 export default function Post ({item,fnFatherComments,sh,fnShowBtn}) {
+
        return (
         <div>
             <div className={'itemTitle'}><b>Title:</b> {item.title}  </div>
