@@ -12,6 +12,7 @@ import AppTest from "./components/testContext/appTest";
 import UserDetails from "./components/userDetails/userDetails";
 import UserDetails2 from "./components/userDetails2/userDetails2";
 import PostDetails from "./components/postDetails/postDetails";
+
 export default App
 function App() {
 
@@ -67,8 +68,8 @@ function App() {
 
 
               <Route path={'/users_/:id'} component={UserDetails2}/>
+              {/*===================================*/}
 
-              {/*==============================================*/}
               <Route path={'/users/:id/allposts'} render={(props)=>
 
                   <div className={'usersPostsFull CenT'}>
