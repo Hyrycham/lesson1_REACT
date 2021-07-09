@@ -103,8 +103,8 @@ let  [incValue, setIncValue]= useState(0);
 
               <form onSubmit={onSubmitInc}  >
                           <input type={'number'} name={'incValue'} value={incValue} onChange={onIncChange} />
-                  <button  > submit</button>
-                     </form>
+                  <button > submit</button>
+              </form>
 
 
           </div>
