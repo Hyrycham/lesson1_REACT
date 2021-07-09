@@ -20,7 +20,7 @@ const SomeNestedComponent=()=>{
     console.log(counter);
 
     return(
-        <div className={'itemUsers CenT CounterWrap'} >
+        <div className={'CenT  CounterBtn Counter'} >
             <h2 className={' CenT'}>{counter}</h2>
                     </div>
     )
@@ -65,7 +65,7 @@ function App() {
         <Router>
 
       <div>
-          <div className={'usersInfo CenT CounterWrap'} >
+          <div className={'CenT CounterWrap'} >
 <div className={'CenT CounterBtn'} >
     <button  className={' CenT CounterBtn'} onClick={()=>{dispatch({type:'INC'})}}> INC</button>
 </div>
@@ -77,6 +77,16 @@ function App() {
               </div>
 
           <SomeChildComponent  />
+
+              <div className={'CenT CounterBtn'} >
+                  <button  className={' CenT CounterBtn'} onClick={()=>{dispatch({type:'INC10'})}}> +10 </button>
+              </div>
+
+              <div className={'CenT CounterBtn'} >
+                  <button  className={' CenT CounterBtn'} onClick={()=>{dispatch({type:'DEC10'})}}> -10 </button>
+              </div>
+
+
           </div>
 
           < Menu  pages={['Main', 'Info' , 'Call']}

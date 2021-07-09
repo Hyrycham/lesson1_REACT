@@ -19,6 +19,12 @@ const  counterReducer =  (state=initialState,action) =>{
         case 'RESET':{
             return {...state, counterValue: 0}
         }
+        case 'INC10':{
+            return {...state, counterValue:  state.counterValue+10}
+        }
+        case 'DEC10':{
+            return {...state, counterValue:  state.counterValue-10}
+        }
         default :
             return state;
     }
