@@ -25,6 +25,12 @@ const  counterReducer =  (state=initialState,action) =>{
         case 'DEC10':{
             return {...state, counterValue:  state.counterValue-10}
         }
+        case 'INCVALUE':{
+            return {...state, counterValue:  +state.counterValue + +action.payload}
+        }
+        // case 'DECVALUE':{
+        //     return {...state, counterValue:  +state.counterValue - +action.payload}
+        // }
         default :
             return state;
     }

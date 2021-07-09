@@ -34,6 +34,21 @@ const SomeChildComponent=()=>{
 export default App
 function App() {
     const dispatch=useDispatch()
+
+    // ===========================
+let  [incValue, setIncValue]= useState(0);
+    function onSubmitInc(e){
+               dispatch({type:'INCVALUE', payload:e.target.incValue.value })
+               e.preventDefault()
+           }
+    // function onSubmitDec(e){
+    //     dispatch({type:'DECVALUE', payload:e.target.incValue.value })
+    //     e.preventDefault()
+    // }
+    function onIncChange(e){
+        setIncValue(e.target.value);
+    }
+
 //    ------------------------------------------
     let [user, setUser]=useState(null);
     let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
@@ -85,6 +100,11 @@ function App() {
               <div className={'CenT CounterBtn'} >
                   <button  className={' CenT CounterBtn'} onClick={()=>{dispatch({type:'DEC10'})}}> -10 </button>
               </div>
+
+              <form onSubmit={onSubmitInc}  >
+                          <input type={'number'} name={'incValue'} value={incValue} onChange={onIncChange} />
+                  <button  > submit</button>
+                     </form>
 
 
           </div>
