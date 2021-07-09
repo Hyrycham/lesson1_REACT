@@ -98,3 +98,15 @@ justify-content: center;
     background-color: darkorange;
     height: 200px;
 }
+
+.CounterBtn{
+    width: 75px;
+height: 50px;
+    display: flex;
+    align-items: center;
+}
+.CounterWrap{
+    display: flex;
+    width: 400px;
+    height: 50px;
+}

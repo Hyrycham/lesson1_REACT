@@ -12,10 +12,28 @@ import AppTest from "./components/testContext/appTest";
 import UserDetails from "./components/userDetails/userDetails";
 import UserDetails2 from "./components/userDetails2/userDetails2";
 import PostDetails from "./components/postDetails/postDetails";
+import {useSelector, useDispatch} from "react-redux";
 
+const SomeNestedComponent=()=>{
+    // const counter=useSelector((state)=>state.counterValue);
+    const counter=useSelector(({counterValue})=>counterValue);
+    console.log(counter);
+
+    return(
+        <div className={'itemUsers CenT CounterWrap'} >
+            <h2 className={' CenT'}>{counter}</h2>
+                    </div>
+    )
+}
+
+const SomeChildComponent=()=>{
+    return(
+        <SomeNestedComponent/>
+    )
+}
 export default App
 function App() {
-
+    const dispatch=useDispatch()
 //    ------------------------------------------
     let [user, setUser]=useState(null);
     let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
@@ -43,9 +61,23 @@ function App() {
 // let appShowBtn=['showOn','showOn'];
     //================================
       return (
+
         <Router>
 
       <div>
+          <div className={'usersInfo CenT CounterWrap'} >
+<div className={'CenT CounterBtn'} >
+    <button  className={' CenT CounterBtn'} onClick={()=>{dispatch({type:'INC'})}}> INC</button>
+</div>
+              <div className={'CenT CounterBtn'} >
+                  <button  className={' CenT CounterBtn'} onClick={()=>{dispatch({type:'DEC'})}}> DEC</button>
+              </div>
+              <div className={'CenT CounterBtn'} >
+                  <button  className={' CenT CounterBtn'} onClick={()=>{dispatch({type:'RESET'})}}> RESET</button>
+              </div>
+
+          <SomeChildComponent  />
+          </div>
 
           < Menu  pages={['Main', 'Info' , 'Call']}
                  classes= {['tr','point']}  />
