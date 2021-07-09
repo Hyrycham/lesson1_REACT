@@ -12,7 +12,7 @@ export default function PostDetails (props) {
     return(
           <div>
               {
-                  // post.map((value,index) => <Divisor  key ={index} items={value} />  )
+                  // post.map((value,index) => <Divisor  key ={index} items={value}  />  )
 
 
                   //
