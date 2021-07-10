@@ -10,7 +10,7 @@ import {Provider} from "react-redux";
 const initialState={counterValue:0,
 postsR:[],
 usersR:[],
-
+photosR:[],
 };
 const  counterReducer =  (state=initialState,action) =>{
     switch (action.type){
@@ -38,9 +38,9 @@ const  counterReducer =  (state=initialState,action) =>{
         case 'SET_USERS':{
             return {...state, usersR:action.payload}
         }
-        // case 'DECVALUE':{
-        //     return {...state, counterValue:  +state.counterValue - +action.payload}
-        // }
+        case 'SET_PHOTOS':{
+            return {...state, photosR:action.payload}
+        }
         default :
             return state;
     }

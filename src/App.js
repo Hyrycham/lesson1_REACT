@@ -36,18 +36,9 @@ export default App
 function App() {
 
 // ===========================
-//     const postsR=useSelector((state)=>state.postsR );
-//
+
     const dispatch=useDispatch()
-// const fetchPosts=async ()=>{
-//         const data= await (await fetch('https://jsonplaceholder.typicode.com/posts/')).json()
-//        dispatch({
-//         type:"SET_POSTS",
-//         payload:data
-//     })
-//     }
-//
-//     useEffect(()=>{fetchPosts()},[])
+
     // ===========================
 let  [incValue, setIncValue]= useState(0);
     function onSubmitInc(e){
@@ -144,11 +135,7 @@ let  [incValue, setIncValue]= useState(0);
                   <Link  to={'/'}>go to HOME page</Link>
               </div>
 
-              {/*<div className={'GOTo CenT WrapLink'}>*/}
-              {/*    <Link  to={'/postsredux'}>go to postsREDUX page</Link>*/}
-              {/*</div>*/}
-
-              <div className={'GOTo CenT WrapLink'}>
+                            <div className={'GOTo CenT WrapLink'}>
                   <Link  to={'/redux'}>go to REDUX page</Link>
               </div>
 
@@ -211,31 +198,6 @@ let  [incValue, setIncValue]= useState(0);
             </div>
         </div>}
       />
-
-
-              {/*<Route path={'/postsredux'} render={()=>*/}
-              {/*    <div className={'wrap'}>*/}
-              {/*                             <div className={'usersPostsFull CenT'}>*/}
-
-              {/*            <div className={'CenT '} >*/}
-              {/*                <div className={'CenT FullPostsTitle '} > ALL POSTS</div>*/}
-              {/*                {postsR.map(postR=>(*/}
-              {/*                    <div key={postR.id}>*/}
-              {/*                        <div className={'itemTitle CenT '}>*/}
-
-              {/*                        {postR.title}*/}
-              {/*                        </div>*/}
-              {/*                            <div className={'itemBody CenT '}>*/}
-              {/*                        {postR.body}*/}
-              {/*                            </div>*/}
-
-
-              {/*                    </div>   ))}*/}
-
-              {/*            </div>*/}
-              {/*        </div>*/}
-              {/*    </div>}*/}
-              {/*/>*/}
 
               <Route path={'/redux'} component={ReduxRouter}/>
 

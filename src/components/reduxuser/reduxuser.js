@@ -4,7 +4,7 @@ import {useEffect} from "react";
 export default function ReduxUsers() {
 
     const usersR = useSelector((state) => state.usersR);
-    console.log(usersR);
+    // console.log(usersR);
     const dispatch = useDispatch()
     const fetchUsers = async () => {
         const data = await (await fetch('https://jsonplaceholder.typicode.com/users/')).json()
@@ -26,12 +26,16 @@ export default function ReduxUsers() {
                         <div className={'CenT FullPostsTitle '} > ALL USERS </div>
                         {usersR.map(userR => (
                             <div key={userR.id}>
-                                <div className={'itemTitle CenT '}>
-                                    {userR.name}
+                                <div className={' itemTitle usersPosts CenT '}>
+                                   <h3>NAME: {userR.name}</h3>
                                 </div>
-                                <div className={'itemBody CenT '}>
-                                    {userR.email}
+                                <div className={'usersInfo CenT '}>
+                                    <h4>Email:  {userR.email}</h4>
                                 </div>
+                                <div className={'usersPosts CenT '}>
+                                    <h4>Website:{userR.website}</h4>
+                                </div>
+
                             </div>))}
 
                     </div>
