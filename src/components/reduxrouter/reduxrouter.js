@@ -1,5 +1,6 @@
 import {BrowserRouter as Router, Link,Route,Switch} from 'react-router-dom'
 import ReduxPosts from "../reduxposts/reduxposts";
+import ReduxUsers from "../reduxuser/reduxuser";
 
 export default function ReduxRouter() {
 
@@ -25,6 +26,8 @@ export default function ReduxRouter() {
                    </div>
                                   </div>
                <Route path={'/r_posts'} component={ReduxPosts}/>
+               <Route path={'/r_users'} component={ReduxUsers}/>
+               <Route path={'/r_comments'} component={ReduxPosts}/>
 
 
            </div>
