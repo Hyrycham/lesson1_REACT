@@ -2,7 +2,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 
 export default function ReduxUsers() {
-
+ // export default function ReduxUsers(props) {
+// console.log(props)
     const usersR = useSelector((state) => state.usersR);
     // console.log(usersR);
     const dispatch = useDispatch()

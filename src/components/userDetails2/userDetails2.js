@@ -1,5 +1,6 @@
 
 export default function UserDetails2 (props) {
+
        let {location:{state}}=props;
         return(
         <div>

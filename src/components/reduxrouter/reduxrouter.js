@@ -3,8 +3,7 @@ import ReduxPosts from "../reduxposts/reduxposts";
 import ReduxUsers from "../reduxuser/reduxuser";
 import ReduxPhotos from "../reduxphotos/reduxphotos";
 export default function ReduxRouter() {
-
-   return(
+       return(
        <Router>
            <Switch>
            <div>
