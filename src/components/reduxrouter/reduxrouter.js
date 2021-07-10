@@ -1,0 +1,34 @@
+import {BrowserRouter as Router, Link,Route,Switch} from 'react-router-dom'
+import ReduxPosts from "../reduxposts/reduxposts";
+
+export default function ReduxRouter() {
+
+   return(
+       <Router>
+           <Switch>
+           <div>
+               <div className={'GOTo  WrapRow'}>
+                   <div className={'GOTo CenT WrapLink '}>
+                       <Link  to={'/r_users'}>go to users page</Link>
+                   </div>
+
+                   <div className={'GOTo CenT WrapLink '}>
+                       <Link  to={'/r_posts'}>go to posts page</Link>
+                   </div>
+
+                   <div className={'GOTo CenT WrapLink'}>
+                       <Link  to={'/r_comments'}>go to comments page</Link>
+                   </div>
+
+                       <div className={'GOTo CenT WrapLink'}>
+                       <Link  to={'/'}>go to HOME page</Link>
+                   </div>
+                                  </div>
+               <Route path={'/r_posts'} component={ReduxPosts}/>
+
+
+           </div>
+               </Switch>
+           </Router>
+               )
+}

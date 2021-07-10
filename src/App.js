@@ -13,6 +13,7 @@ import UserDetails from "./components/userDetails/userDetails";
 import UserDetails2 from "./components/userDetails2/userDetails2";
 import PostDetails from "./components/postDetails/postDetails";
 import {useSelector, useDispatch} from "react-redux";
+import ReduxRouter from "./components/reduxrouter/reduxrouter";
 
 const SomeNestedComponent=()=>{
     // const counter=useSelector((state)=>state.counterValue);
@@ -35,18 +36,18 @@ export default App
 function App() {
 
 // ===========================
-    const postsR=useSelector((state)=>state.postsR );
-
+//     const postsR=useSelector((state)=>state.postsR );
+//
     const dispatch=useDispatch()
-const fetchPosts=async ()=>{
-        const data= await (await fetch('https://jsonplaceholder.typicode.com/posts/')).json()
-       dispatch({
-        type:"SET_POSTS",
-        payload:data
-    })
-    }
-
-    useEffect(()=>{fetchPosts()},[])
+// const fetchPosts=async ()=>{
+//         const data= await (await fetch('https://jsonplaceholder.typicode.com/posts/')).json()
+//        dispatch({
+//         type:"SET_POSTS",
+//         payload:data
+//     })
+//     }
+//
+//     useEffect(()=>{fetchPosts()},[])
     // ===========================
 let  [incValue, setIncValue]= useState(0);
     function onSubmitInc(e){
@@ -143,9 +144,9 @@ let  [incValue, setIncValue]= useState(0);
                   <Link  to={'/'}>go to HOME page</Link>
               </div>
 
-              <div className={'GOTo CenT WrapLink'}>
-                  <Link  to={'/postsredux'}>go to postsREDUX page</Link>
-              </div>
+              {/*<div className={'GOTo CenT WrapLink'}>*/}
+              {/*    <Link  to={'/postsredux'}>go to postsREDUX page</Link>*/}
+              {/*</div>*/}
 
               <div className={'GOTo CenT WrapLink'}>
                   <Link  to={'/redux'}>go to REDUX page</Link>
@@ -190,8 +191,6 @@ let  [incValue, setIncValue]= useState(0);
                         {/*{ (user &&<div> {user.name} {JSON.stringify(user)} </div> ) ||<div> no information </div> }*/}
                         { (user &&<div> name:{user.name}  ID:{user.id} username:{user.username} email:{user.email} </div> ) ||<div> no information </div> }
 
-
-
                     </div>
                 </div>
 
@@ -214,36 +213,31 @@ let  [incValue, setIncValue]= useState(0);
       />
 
 
-              <Route path={'/postsredux'} render={()=>
-                  <div className={'wrap'}>
-                                           <div className={'usersPostsFull CenT'}>
+              {/*<Route path={'/postsredux'} render={()=>*/}
+              {/*    <div className={'wrap'}>*/}
+              {/*                             <div className={'usersPostsFull CenT'}>*/}
 
-                          <div className={'CenT '} >
-                              <div className={'CenT FullPostsTitle '} > ALL POSTS</div>
-                              {postsR.map(postR=>(
-                                  <div key={postR.id}>
-                                      <div className={'itemTitle CenT '}>
+              {/*            <div className={'CenT '} >*/}
+              {/*                <div className={'CenT FullPostsTitle '} > ALL POSTS</div>*/}
+              {/*                {postsR.map(postR=>(*/}
+              {/*                    <div key={postR.id}>*/}
+              {/*                        <div className={'itemTitle CenT '}>*/}
 
-                                      {postR.title}
-                                      </div>
-                                          <div className={'itemBody CenT '}>
-                                      {postR.body}
-                                          </div>
-
-
-                                  </div>   ))}
-
-                          </div>
-                      </div>
-                  </div>}
-              />
+              {/*                        {postR.title}*/}
+              {/*                        </div>*/}
+              {/*                            <div className={'itemBody CenT '}>*/}
+              {/*                        {postR.body}*/}
+              {/*                            </div>*/}
 
 
-              <Route path={'/redux'} render={()=>
-                  <div className={'wrap'}>
+              {/*                    </div>   ))}*/}
 
-                  </div>}
-              />
+              {/*            </div>*/}
+              {/*        </div>*/}
+              {/*    </div>}*/}
+              {/*/>*/}
+
+              <Route path={'/redux'} component={ReduxRouter}/>
 
 
     <Route path={'/comments'} >
