@@ -7,7 +7,8 @@ import { createStore } from "redux";
 import {Provider} from "react-redux";
 
 
-const initialState={counterValue:0};
+const initialState={counterValue:0,
+postsR:[]};
 const  counterReducer =  (state=initialState,action) =>{
     switch (action.type){
         case 'INC':{
@@ -28,6 +29,10 @@ const  counterReducer =  (state=initialState,action) =>{
         case 'INCVALUE':{
             return {...state, counterValue:  +state.counterValue + +action.payload}
         }
+        case 'SET_POSTS':{
+            return {...state, postsR:action.payload}
+        }
+
         // case 'DECVALUE':{
         //     return {...state, counterValue:  +state.counterValue - +action.payload}
         // }

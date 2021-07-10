@@ -39,11 +39,18 @@ display: flex;
 .WrapColumn{
     display: flex;
     flex-direction: column;
+  flex-wrap: wrap ;
+}
+.WrapRow{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap ;
 }
 
 .CenT{
 justify-content: center;
     align-items: center;
+
 }
 
 .itemUsers{
@@ -101,10 +108,18 @@ justify-content: center;
 
 .CounterBtn{
     width: 75px;
-height: 50px;
+height: 40px;
     display: flex;
     align-items: center;
 }
+.CounterBtnC {
+    min-width:75px ;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+
 .CounterWrap{
     display: flex;
     width:100%;
@@ -119,4 +134,19 @@ form{
     padding: 0;
     display: flex;
     flex-direction: column;
+}
+.WrapLink{
+    display: flex;
+    width: 200px;
+    height: 25px;
+    border: solid black 1px;
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 5px;
+
+}
+link{
+    padding: 0;
+    margin: 0;
+
 }

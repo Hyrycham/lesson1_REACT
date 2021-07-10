@@ -14,11 +14,6 @@ export default function PostDetails (props) {
               {
                   // post.map((value,index) => <Divisor  key ={index} items={value}  />  )
 
-
-                  //
-                  // <Divisor  items={{qwqwqwq:[{tyty:'tytyoooo'},{tyty:'tytyoooo',tytsds:'tytysdsascoooo'},'qazwqazqaz'],ererer:'qwertyqwerewr'}} />
-                  // <Divisor  items='qqqqqqqqqqqqq'/>
-
                   post.map((value,index) => <div className={'FullPosts'} key ={index} >
 
                       <div className={'itemTitle'}><b>PostsID:</b> {value.id}  </div>

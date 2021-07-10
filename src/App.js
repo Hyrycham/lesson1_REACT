@@ -17,13 +17,13 @@ import {useSelector, useDispatch} from "react-redux";
 const SomeNestedComponent=()=>{
     // const counter=useSelector((state)=>state.counterValue);
     const counter=useSelector(({counterValue})=>counterValue);
-    console.log(counter);
-
     return(
-        <div className={'CenT  CounterBtn Counter'} >
-            <h2 className={' CenT'}>{counter}</h2>
-                    </div>
-    )
+        <div>
+            <div className={'CenT  CounterBtnC Counter'} >
+                <h2 className={' CenT'}>{counter}</h2>
+            </div>
+     </div>
+   )
 }
 
 const SomeChildComponent=()=>{
@@ -33,22 +33,30 @@ const SomeChildComponent=()=>{
 }
 export default App
 function App() {
-    const dispatch=useDispatch()
 
+// ===========================
+    const postsR=useSelector((state)=>state.postsR );
+
+    const dispatch=useDispatch()
+const fetchPosts=async ()=>{
+        const data= await (await fetch('https://jsonplaceholder.typicode.com/posts/')).json()
+       dispatch({
+        type:"SET_POSTS",
+        payload:data
+    })
+    }
+
+    useEffect(()=>{fetchPosts()},[])
     // ===========================
 let  [incValue, setIncValue]= useState(0);
     function onSubmitInc(e){
                dispatch({type:'INCVALUE', payload:e.target.incValue.value })
                e.preventDefault()
            }
-    // function onSubmitDec(e){
-    //     dispatch({type:'DECVALUE', payload:e.target.incValue.value })
-    //     e.preventDefault()
-    // }
+
     function onIncChange(e){
         setIncValue(e.target.value);
     }
-
 //    ------------------------------------------
     let [user, setUser]=useState(null);
     let appFn = (id) => {getUser(id).then(value => setUser(value.data))};
@@ -59,7 +67,6 @@ let  [incValue, setIncValue]= useState(0);
 //---------------------------------------------------
     let [comments, setComments]=useState([]);
     let  appFnComments = (id)  =>{getComments(id).then(value => setComments(value.data))};
-
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++
     // let [show, setShow]=useState(['showOn','showOff']);
@@ -80,6 +87,7 @@ let  [incValue, setIncValue]= useState(0);
         <Router>
 
       <div>
+
           <div className={'CenT CounterWrap'} >
 <div className={'CenT CounterBtn'} >
     <button  className={' CenT CounterBtn'} onClick={()=>{dispatch({type:'INC'})}}> INC</button>
@@ -112,16 +120,37 @@ let  [incValue, setIncValue]= useState(0);
           < Menu  pages={['Main', 'Info' , 'Call']}
                  classes= {['tr','point']}  />
 
-          <div className={'GOTo CenT WrapColumn'}>
-              <Link  to={'/users'}>go to users page</Link>
 
-              <Link  to={'/posts'}>go to posts page</Link>
 
-              <Link  to={'/comments'}>go to comments page</Link>
+          <div className={'GOTo  WrapRow'}>
+              <div className={'GOTo CenT WrapLink '}>
+                  <Link  to={'/users'}>go to users page</Link>
+              </div>
 
-              <Link  to={'/testContext'}>go to TESTCONTEXT</Link>
+              <div className={'GOTo CenT WrapLink '}>
+                  <Link  to={'/posts'}>go to posts page</Link>
+              </div>
 
-              <Link  to={'/'}>go to HOME page</Link>
+              <div className={'GOTo CenT WrapLink'}>
+                  <Link  to={'/comments'}>go to comments page</Link>
+              </div>
+
+              <div className={'GOTo CenT WrapLink  showOff'}>
+                  <Link  to={'/testContext'}>go to TESTCONTEXT</Link>
+              </div>
+
+              <div className={'GOTo CenT WrapLink'}>
+                  <Link  to={'/'}>go to HOME page</Link>
+              </div>
+
+              <div className={'GOTo CenT WrapLink'}>
+                  <Link  to={'/postsredux'}>go to postsREDUX page</Link>
+              </div>
+
+              <div className={'GOTo CenT WrapLink'}>
+                  <Link  to={'/redux'}>go to REDUX page</Link>
+              </div>
+
 
 
           </div>
@@ -183,6 +212,39 @@ let  [incValue, setIncValue]= useState(0);
             </div>
         </div>}
       />
+
+
+              <Route path={'/postsredux'} render={()=>
+                  <div className={'wrap'}>
+                                           <div className={'usersPostsFull CenT'}>
+
+                          <div className={'CenT '} >
+                              <div className={'CenT FullPostsTitle '} > ALL POSTS</div>
+                              {postsR.map(postR=>(
+                                  <div key={postR.id}>
+                                      <div className={'itemTitle CenT '}>
+
+                                      {postR.title}
+                                      </div>
+                                          <div className={'itemBody CenT '}>
+                                      {postR.body}
+                                          </div>
+
+
+                                  </div>   ))}
+
+                          </div>
+                      </div>
+                  </div>}
+              />
+
+
+              <Route path={'/redux'} render={()=>
+                  <div className={'wrap'}>
+
+                  </div>}
+              />
+
 
     <Route path={'/comments'} >
         <div className={'wrap'}>
