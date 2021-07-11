@@ -3,63 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore } from "redux";
 import {Provider} from "react-redux";
+import {store} from "./redux";
 
-
-const initialState={counterValue:0,
-postsR:[],
-usersR:[],
-photosR:[],
-// commentsR:[]
-};
-const  counterReducer =  (state=initialState,action) =>{
-    switch (action.type){
-        case 'INC':{
-            return {...state, counterValue: state.counterValue+1}
-        }
-        case 'DEC':{
-            return {...state, counterValue: state.counterValue-1}
-        }
-        case 'RESET':{
-            return {...state, counterValue: 0}
-        }
-        case 'INC10':{
-            return {...state, counterValue:  state.counterValue+10}
-        }
-        case 'DEC10':{
-            return {...state, counterValue:  state.counterValue-10}
-        }
-        case 'INCVALUE':{
-            return {...state, counterValue:  +state.counterValue + +action.payload}
-        }
-        case 'SET_POSTS':{
-            return {...state, postsR:action.payload}
-        }
-        case 'SET_USERS':{
-            return {...state, usersR:action.payload}
-        }
-        case 'SET_PHOTOS':{
-            return {...state, photosR:action.payload}
-        }
-        // case 'SET_COMMENTS':{
-        //     return {...state, commentsR:action.payload}
-        // }
-        default :
-            return state;
-    }
-};
-
-const store=createStore(counterReducer);
-
-// console.log(store);
-// console.log(store.getState());
-// store.subscribe(()=>{console.log(store.getState())})
-//
-// store.dispatch({type:'INC'})
-//
-//
-// store.dispatch({type:'DEC'})
 
 
 ReactDOM.render(
