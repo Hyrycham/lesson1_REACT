@@ -17,6 +17,25 @@ import ReduxPosts from "./components/reduxposts/reduxposts";
 import ReduxUsers from "./components/reduxuser/reduxuser";
 import ReduxPhotos from "./components/reduxphotos/reduxphotos";
 
+
+
+const CreateTodoForm=()=>{
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+
+    }
+    return(
+        <form onSubmit={handleSubmit}>
+<input type='text' placeholder='title'/>
+            <input type='text' placeholder='description'/>
+            <button type='submit'> create TODO</button>
+
+        </form>
+    )
+
+}
+
+
 const SomeNestedComponent=()=>{
     // const counter=useSelector((state)=>state.counterValue);
     const counter=useSelector(({counterValue})=>counterValue);
@@ -29,8 +48,6 @@ const SomeNestedComponent=()=>{
    )
 }
 
-
-
 const SomeChildComponent=()=>{
     return(
         <SomeNestedComponent/>
@@ -38,7 +55,8 @@ const SomeChildComponent=()=>{
 }
 export default App
 function App() {
-
+    const store=useSelector(stete=>state);
+    console.log(store);
 // ===========================
 
     const dispatch=useDispatch()
@@ -83,8 +101,11 @@ let  [incValue, setIncValue]= useState(0);
         <Router>
 
       <div>
+<CreateTodoForm/>
 
-          <div className={'CenT CounterWrap'} >
+
+          {/*====================*/}
+<div className={'CenT CounterWrap'} >
 <div className={'CenT CounterBtn'} >
     <button  className={' CenT CounterBtn'} onClick={()=>{dispatch({type:'INC'})}}> INC</button>
 </div>
