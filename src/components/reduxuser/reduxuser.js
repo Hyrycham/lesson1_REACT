@@ -1,12 +1,12 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 
-export default function ReduxUsers() {
- // export default function ReduxUsers(props) {
-// console.log(props)
+// export default function ReduxUsers() {
+ export default function ReduxUsers(props) {
+     console.log(props)
+
     const usersR = useSelector((state) => state.usersR);
-    // console.log(usersR);
-    const dispatch = useDispatch()
+     const dispatch = useDispatch()
     const fetchUsers = async () => {
         const data = await (await fetch('https://jsonplaceholder.typicode.com/users/')).json()
         dispatch({
@@ -17,6 +17,9 @@ export default function ReduxUsers() {
     useEffect(() => {
         fetchUsers()
     }, [])
+
+     props.location.state=usersR;
+     console.log(props)
 // ======================
 
     return (

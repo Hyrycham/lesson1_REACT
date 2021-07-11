@@ -2,7 +2,8 @@ import {BrowserRouter as Router, Link,Route,Switch} from 'react-router-dom'
 import ReduxPosts from "../reduxposts/reduxposts";
 import ReduxUsers from "../reduxuser/reduxuser";
 import ReduxPhotos from "../reduxphotos/reduxphotos";
-export default function ReduxRouter() {
+export default function ReduxRouter(props) {
+    // console.log(props)
        return(
        <Router>
            <Switch>

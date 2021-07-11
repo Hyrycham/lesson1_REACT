@@ -1,11 +1,10 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 
-export default function ReduxPhotos() {
-
+export default function ReduxPhotos(props) {
+    // console.log(props)
     const photosR = useSelector((state) => state.photosR);
-    // console.log(photosR);
-    const dispatch = useDispatch()
+     const dispatch = useDispatch()
     const fetchPhotos = async () => {
         const data = await (await fetch('https://jsonplaceholder.typicode.com/photos/')).json()
         dispatch({
