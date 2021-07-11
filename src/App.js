@@ -14,6 +14,9 @@ import UserDetails2 from "./components/userDetails2/userDetails2";
 import PostDetails from "./components/postDetails/postDetails";
 import {useSelector, useDispatch} from "react-redux";
 import ReduxRouter from "./components/reduxrouter/reduxrouter";
+import ReduxPosts from "./components/reduxposts/reduxposts";
+import ReduxUsers from "./components/reduxuser/reduxuser";
+import ReduxPhotos from "./components/reduxphotos/reduxphotos";
 
 const SomeNestedComponent=()=>{
     // const counter=useSelector((state)=>state.counterValue);
@@ -135,11 +138,27 @@ let  [incValue, setIncValue]= useState(0);
                   <Link  to={'/'}>go to HOME page</Link>
               </div>
 
-                            <div className={'GOTo CenT WrapLink'}>
-                  <Link  to={'/redux'}>go to REDUX page</Link>
+              {/*              <div className={'GOTo CenT WrapLink'}>*/}
+              {/*    <Link  to={'/redux'}>go to REDUX page</Link>*/}
+              {/*</div>*/}
+
+              <div className={'GOTo  WrapRow '}>
+                  <div className={'GOTo CenT WrapLink goldenrod'}>
+                      <Link  to={'/r_users'}>go to users page</Link>
+                  </div>
+
+                  <div className={'GOTo CenT WrapLink goldenrod'}>
+                      <Link  to={'/r_posts'}>go to posts page</Link>
+                  </div>
+
+                  <div className={'GOTo CenT WrapLink goldenrod'}>
+                      <Link  to={'/r_photos'}>go to photos page</Link>
+                  </div>
+
+                  {/*<div className={'GOTo CenT WrapLink goldenrod'}>*/}
+                  {/*    <Link  to={'/'}>go to HOME page</Link>*/}
+                  {/*</div>*/}
               </div>
-
-
 
           </div>
 
@@ -199,7 +218,7 @@ let  [incValue, setIncValue]= useState(0);
         </div>}
       />
 
-              <Route path={'/redux'} component={ReduxRouter}/>
+              {/*<Route path={'/redux'} component={ReduxRouter}/>*/}
 
 
     <Route path={'/comments'} >
@@ -228,6 +247,11 @@ let  [incValue, setIncValue]= useState(0);
                   <AppTest />
 
               </div>} />
+
+              <Route path={'/r_posts'} component={ReduxPosts}/>
+              <Route path={'/r_users'} component={ReduxUsers}/>
+              <Route path={'/r_photos'} component={ReduxPhotos}/>
+
 
     <Route exact path={'/'} render={()=><div className={'linkHome wrap CenT'}>This is HOME page</div>} />
 

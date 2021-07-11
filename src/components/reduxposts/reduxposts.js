@@ -2,7 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 
 export default function ReduxPosts(props) {
-    // console.log(props)
+    console.log(props)
     const postsR = useSelector((state) => state.postsR);
        const dispatch = useDispatch()
     const fetchPosts = async () => {
