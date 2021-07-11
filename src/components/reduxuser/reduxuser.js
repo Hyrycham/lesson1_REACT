@@ -3,7 +3,7 @@ import {useEffect} from "react";
 
 // export default function ReduxUsers() {
  export default function ReduxUsers(props) {
-     console.log(props)
+     // console.log(props)
 
     const usersR = useSelector((state) => state.usersR);
      const dispatch = useDispatch()
@@ -19,8 +19,7 @@ import {useEffect} from "react";
     }, [])
 
      props.location.state=usersR;
-     console.log(props)
-// ======================
+   // ======================
 
     return (
         <div>

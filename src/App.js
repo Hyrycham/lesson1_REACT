@@ -13,7 +13,6 @@ import UserDetails from "./components/userDetails/userDetails";
 import UserDetails2 from "./components/userDetails2/userDetails2";
 import PostDetails from "./components/postDetails/postDetails";
 import {useSelector, useDispatch} from "react-redux";
-import ReduxRouter from "./components/reduxrouter/reduxrouter";
 import ReduxPosts from "./components/reduxposts/reduxposts";
 import ReduxUsers from "./components/reduxuser/reduxuser";
 import ReduxPhotos from "./components/reduxphotos/reduxphotos";
@@ -144,15 +143,15 @@ let  [incValue, setIncValue]= useState(0);
 
               <div className={'GOTo  WrapRow '}>
                   <div className={'GOTo CenT WrapLink goldenrod'}>
-                      <Link  to={'/r_users'}>go to users page</Link>
+                      <Link  to={'/r_users'}>go to users (REDUX)</Link>
                   </div>
 
                   <div className={'GOTo CenT WrapLink goldenrod'}>
-                      <Link  to={'/r_posts'}>go to posts page</Link>
+                      <Link  to={'/r_posts'}>go to posts (REDUX)</Link>
                   </div>
 
                   <div className={'GOTo CenT WrapLink goldenrod'}>
-                      <Link  to={'/r_photos'}>go to photos page</Link>
+                      <Link  to={'/r_photos'}>go to photos (REDUX)</Link>
                   </div>
 
                   {/*<div className={'GOTo CenT WrapLink goldenrod'}>*/}
