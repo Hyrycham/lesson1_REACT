@@ -153,3 +153,18 @@ link{
 .goldenrod{
     background-color: goldenrod;
 }
+.todo{
+    border: solid 1px black;
+background-color: goldenrod;
+    box-sizing: border-box;
+}
+.userCard {
+    background-color: orange;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: solid 1px darkblue;
+    box-sizing: border-box;
+    margin-bottom:2px ;
+    width: 220px;
+}

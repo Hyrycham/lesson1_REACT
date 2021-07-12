@@ -26,6 +26,7 @@ const CreateTodoForm = ( {onSubmit} )=>{
 
     }
     return(
+        <div className={'userCard CenT '}>
         <form onSubmit={handleSubmit}>
 <input
     type='text'
@@ -42,15 +43,16 @@ const CreateTodoForm = ( {onSubmit} )=>{
             <button type='submit' disabled={!title||!description||loading}> create todo </button>
 
         </form>
+        </div>
     )
 }
 
-const TodosList =({todos,isLoading})=>{
+const TodosList =({todos,isLoading,GetTodoId})=>{
     if (isLoading) return <h1>LOADING....</h1>
     return(
-        <div>
+        <div className={'WrapColumn CenT usersPostsFull'}>
             {todos.map(todo=>(
-                <div>
+                <div className={'WrapColumn CenT todo'} key={todo.id}>
                 <h4>
                     {todo.title}
                 </h4>
@@ -59,7 +61,9 @@ const TodosList =({todos,isLoading})=>{
                     </p>
                     <span> Created At:{new Date(todo.createdAt).toLocaleString()} </span>
                     <hr/>
-
+<div>
+    <button onClick={()=>{GetTodoId(todo.id)}}>GET ID </button>
+</div>
                 </div>
                 ))
                     }
@@ -67,15 +71,36 @@ const TodosList =({todos,isLoading})=>{
 
     )
 }
-// const setLoadingTrue=()=>({type:'SET_LOADING_TRUE'})
-// const setLoadingFasle=()=>({type:'SET_LOADING_FALSE'})
-// const PushNewTodo=(payload)=>({type:'PUSH_NEW_TODO', payload})
-// const addTodos=(payload)=>({type:'ADD_TODOS', payload})
+
+
+   // ==============
 
 function App() {
     const {todos,isLoading}=useSelector(({todosReducer})=>todosReducer);
 const  dispatch= useDispatch()
+// ==================
+    const GetTodoId = (id)=>{
+        console.log(id)
+        fetchTodosId (id)
+    }
+    // useEffect(()=> {
+    //     fetchTodosId()
+    // },[])
+    const fetchTodosId = async (id)=>{
 
+            try {
+                dispatch(setLoadingTrue())
+            const response= await fetch('http://localhost:8888/todo/'+id)
+            const  data= await response.json();
+            console.log(data)
+        } catch (e){
+            console.log(e)
+        } finally {
+                dispatch( setLoadingFasle())
+        }
+
+    }
+// ==============
   useEffect(()=> {
       fetchTodos()
   },[])
@@ -112,10 +137,6 @@ const data= await response.json();
 
 }
 
-// ===========================
-
-    // const dispatch=useDispatch()
-
     // ===========================
 
       return (
@@ -123,7 +144,7 @@ const data= await response.json();
 
       <div>
 <CreateTodoForm onSubmit={onTodoCreate}/>
-          <TodosList todos={todos} isLoading={isLoading}/>
+          <TodosList todos={todos} isLoading={isLoading} GetTodoId={GetTodoId}/>
 
           </div>
 
