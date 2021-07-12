@@ -1,5 +1,5 @@
 import './App.css';
-
+import {setLoadingTrue,setLoadingFasle,pushNewTodo,addTodos} from './redux/actionCreators/'
 import {useEffect, useState} from "react";
 // import {BrowserRouter as Router, Link,Route,Switch} from 'react-router-dom'
 
@@ -67,7 +67,10 @@ const TodosList =({todos,isLoading})=>{
 
     )
 }
-
+// const setLoadingTrue=()=>({type:'SET_LOADING_TRUE'})
+// const setLoadingFasle=()=>({type:'SET_LOADING_FALSE'})
+// const PushNewTodo=(payload)=>({type:'PUSH_NEW_TODO', payload})
+// const addTodos=(payload)=>({type:'ADD_TODOS', payload})
 
 function App() {
     const {todos,isLoading}=useSelector(({todosReducer})=>todosReducer);
@@ -78,14 +81,14 @@ const  dispatch= useDispatch()
   },[])
     const fetchTodos = async ()=>{
       try {
-          dispatch({type:'SET_LOADING_TRUE'})
+          dispatch(setLoadingTrue())
           const response= await fetch('http://localhost:8888/get-todos')
           const  data= await response.json();
-          dispatch({type:'ADD_TODOS',payload: data})
+          dispatch(addTodos(data))
       } catch (e){
           console.log(e)
       } finally {
-          dispatch({type:'SET_LOADING_FALSE'})
+          dispatch( setLoadingFasle())
       }
 
     }
@@ -104,7 +107,7 @@ const  response=await fetch('http://localhost:8888/create-todo',{
 const data= await response.json();
 // await fetchTodos();
         console.log(data)
-    dispatch({type:'PUSH_NEW_TODO', payload:data})
+    dispatch( pushNewTodo(data))
 
 
 }
