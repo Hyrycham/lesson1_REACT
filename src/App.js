@@ -1,7 +1,7 @@
 import './App.css';
 
 import {useEffect, useState} from "react";
-import {BrowserRouter as Router, Link,Route,Switch} from 'react-router-dom'
+// import {BrowserRouter as Router, Link,Route,Switch} from 'react-router-dom'
 
 import {useSelector, useDispatch} from "react-redux";
 
@@ -46,6 +46,7 @@ const CreateTodoForm = ( {onSubmit} )=>{
 }
 
 const TodosList =({todos,isLoading})=>{
+    if (isLoading) return <h1>LOADING....</h1>
     return(
         <div>
             {todos.map(todo=>(
@@ -56,6 +57,9 @@ const TodosList =({todos,isLoading})=>{
                     <p>
                         {todo.description}
                     </p>
+                    <span> Created At:{new Date(todo.createdAt).toLocaleString()} </span>
+                    <hr/>
+
                 </div>
                 ))
                     }
@@ -64,20 +68,24 @@ const TodosList =({todos,isLoading})=>{
     )
 }
 
-export default App
-function App() {
-    const store=useSelector(state=>state);
-    console.log(store);
 
-  useEffect(()=>{},[])
+function App() {
+    const {todos,isLoading}=useSelector(({todosReducer})=>todosReducer);
+const  dispatch= useDispatch()
+
+  useEffect(()=> {
+      fetchTodos()
+  },[])
     const fetchTodos = async ()=>{
       try {
+          dispatch({type:'SET_LOADING_TRUE'})
           const response= await fetch('http://localhost:8888/get-todos')
-          const  data= await response.json()
+          const  data= await response.json();
+          dispatch({type:'ADD_TODOS',payload: data})
       } catch (e){
           console.log(e)
       } finally {
-
+          dispatch({type:'SET_LOADING_FALSE'})
       }
 
     }
@@ -94,7 +102,11 @@ const  response=await fetch('http://localhost:8888/create-todo',{
     }
 })
 const data= await response.json();
-    console.log(data)
+// await fetchTodos();
+        console.log(data)
+    dispatch({type:'PUSH_NEW_TODO', payload:data})
+
+
 }
 
 // ===========================
@@ -108,7 +120,7 @@ const data= await response.json();
 
       <div>
 <CreateTodoForm onSubmit={onTodoCreate}/>
-          <TodosList/>
+          <TodosList todos={todos} isLoading={isLoading}/>
 
           </div>
 
@@ -117,3 +129,4 @@ const data= await response.json();
 }
 
 
+export default App
