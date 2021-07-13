@@ -88,11 +88,20 @@ const TodosList = ({todos, isLoading, GetTodoId, DeleteTodoId, editSubmit}) => {
                                 DeleteTodoId(todo.id)
                             }}> DELETE TODO Id:{todo.id} </button>
                         </div>
+
+
                         <div>
                             <form onSubmit={() => editSubmit(todo.id, titleInputState, descriptionInputState)}>
-                                <input type={'text'} placeholder={todo.title} name={'title'} onChange={onInputChangeTitle}/>
-                                <input type={'text'} placeholder={todo.description} name={'description'}
-                                       onChange={onInputChangeDescription}/>
+                                <input
+                                    type={'text'}
+                                    placeholder={todo.title}
+                                    name={'title'}
+                                    onChange={onInputChangeTitle}/>
+                                <input
+                                    type={'text'}
+                                    placeholder={todo.description}
+                                    name={'description'}
+                                    onChange={onInputChangeDescription}/>
                                 <button> save</button>
                             </form>
                         </div>
@@ -112,10 +121,8 @@ function App() {
     const dispatch = useDispatch()
 // =================
 
-    const editSubmit = async (id, titleInputState, descriptionInputState) => {
-        const title = titleInputState
-        const description = descriptionInputState
-        const response = await fetch('http://localhost:8888/update-todo/' + id, {
+    const editSubmit = async (id, title, description) => {
+            const response = await fetch('http://localhost:8888/update-todo/' + id, {
             method: 'PATCH',
             body: JSON.stringify({title, description}),
             headers: {
