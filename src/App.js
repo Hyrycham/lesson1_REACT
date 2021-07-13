@@ -47,18 +47,24 @@ const CreateTodoForm = ( {onSubmit} )=>{
     )
 }
 
-const TodosList =({todos,isLoading,GetTodoId,DeleteTodoId,onInputChangeTitle, titleInputState, editSubmit })=>{
+const TodosList =({todos,isLoading,GetTodoId,DeleteTodoId, editSubmit })=>{
 
 
     const [descriptionInputState,setDescriptionInputState]=useState('')
     const onInputChangeDescription=(e)=>{
-        console.log(e.target.value)
+        console.log(e.target.value);
       setDescriptionInputState(e.target.value)
     }
+    // =================
+    const [titleInputState,setTitleInputState]=useState('')
+    const onInputChangeTitle=(e)=>{
+        console.log(e.target.value);
+        setTitleInputState(e.target.value) }
 
     if (isLoading) return <h1>LOADING....</h1>
     return(
         <div className={'WrapColumn CenT usersPostsFull'}>
+
             {todos.map(todo=>(
                 <div className={`WrapColumn CenT todo`} key={todo.id}>
                 <h4>
@@ -77,8 +83,8 @@ const TodosList =({todos,isLoading,GetTodoId,DeleteTodoId,onInputChangeTitle, ti
                     </div>
                     <div>
                         <form   onSubmit={()=>editSubmit(todo.id,titleInputState,descriptionInputState)}>
-                            <input type={'text'}  placeholder={todo.title}  value={titleInputState} name={'title'} onChange={onInputChangeTitle} />
-                            <input type={'text'} placeholder={todo.description} value={descriptionInputState} name={'description'} onChange={onInputChangeDescription} />
+                            <input type={'text'}  placeholder={todo.title}   name={'title'} onChange={onInputChangeTitle} />
+                            <input type={'text'} placeholder={todo.description}  name={'description'} onChange={onInputChangeDescription} />
                                 <button> save</button>
 
 
@@ -118,11 +124,7 @@ const  dispatch= useDispatch()
       console.log(data)
       // dispatch( pushNewTodo(data))
   }
-    // =================
-    const [titleInputState,setTitleInputState]=useState('')
-    const onInputChangeTitle=(e)=>{
-        console.log(e.target.value)
-        setTitleInputState(e.target.value) }
+
 // ==================
 const DeleteTodoId=(id)=>{fetchTodoDelete(id)}
     const fetchTodoDelete= async (id)=>{
@@ -185,8 +187,6 @@ const data= await response.json();
 // await fetchTodos();
         console.log(data)
     dispatch( pushNewTodo(data))
-
-
 }
 
     // ===========================
@@ -201,8 +201,6 @@ const data= await response.json();
               isLoading={isLoading}
               GetTodoId={GetTodoId}
               DeleteTodoId={DeleteTodoId}
-              onInputChangeTitle={onInputChangeTitle}
-              titleInputState={titleInputState}
               editSubmit={editSubmit}
           />
 
