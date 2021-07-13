@@ -47,12 +47,20 @@ const CreateTodoForm = ( {onSubmit} )=>{
     )
 }
 
-const TodosList =({todos,isLoading,GetTodoId})=>{
+const TodosList =({todos,isLoading,GetTodoId,DeleteTodoId,onInputChangeTitle, titleInputState, editSubmit })=>{
+
+
+    const [descriptionInputState,setDescriptionInputState]=useState('')
+    const onInputChangeDescription=(e)=>{
+        console.log(e.target.value)
+      setDescriptionInputState(e.target.value)
+    }
+
     if (isLoading) return <h1>LOADING....</h1>
     return(
         <div className={'WrapColumn CenT usersPostsFull'}>
             {todos.map(todo=>(
-                <div className={'WrapColumn CenT todo'} key={todo.id}>
+                <div className={`WrapColumn CenT todo`} key={todo.id}>
                 <h4>
                     {todo.title}
                 </h4>
@@ -64,6 +72,21 @@ const TodosList =({todos,isLoading,GetTodoId})=>{
 <div>
     <button onClick={()=>{GetTodoId(todo.id)}}>GET ID </button>
 </div>
+                    <div>
+                        <button onClick={()=>{DeleteTodoId(todo.id)}}> DELETE TODO Id:{todo.id} </button>
+                    </div>
+                    <div>
+                        <form   onSubmit={()=>editSubmit(todo.id,titleInputState,descriptionInputState)}>
+                            <input type={'text'}  placeholder={todo.title}  value={titleInputState} name={'title'} onChange={onInputChangeTitle} />
+                            <input type={'text'} placeholder={todo.description} value={descriptionInputState} name={'description'} onChange={onInputChangeDescription} />
+                                <button> save</button>
+
+
+                        </form>
+                    </div>
+
+
+
                 </div>
                 ))
                     }
@@ -78,15 +101,44 @@ const TodosList =({todos,isLoading,GetTodoId})=>{
 function App() {
     const {todos,isLoading}=useSelector(({todosReducer})=>todosReducer);
 const  dispatch= useDispatch()
+// =================
+
+  const  editSubmit =async (id,titleInputState,descriptionInputState)=>{
+      const title=titleInputState
+
+      const description=descriptionInputState
+             const  response=await fetch('http://localhost:8888/update-todo/'+id,{
+           method:'PATCH',
+          body:JSON.stringify({title,description}),
+          headers:{
+              'Content-type':'application/json'
+          }
+      })
+      const data= await response.json();
+      console.log(data)
+      // dispatch( pushNewTodo(data))
+  }
+    // =================
+    const [titleInputState,setTitleInputState]=useState('')
+    const onInputChangeTitle=(e)=>{
+        console.log(e.target.value)
+        setTitleInputState(e.target.value) }
 // ==================
-    const GetTodoId = (id)=>{
-        console.log(id)
-        fetchTodosId (id)
+const DeleteTodoId=(id)=>{fetchTodoDelete(id)}
+    const fetchTodoDelete= async (id)=>{
+            const  response=await fetch('http://localhost:8888/delete-todo/'+id,{
+            method:'DELETE'
+                      }
+        )
+        const data= await response.json();
+        console.log(data)
+//         dispatch( pushNewTodo(data))
+
+await fetchTodos();
     }
-    // useEffect(()=> {
-    //     fetchTodosId()
-    // },[])
-    const fetchTodosId = async (id)=>{
+// ====================
+    const GetTodoId = (id)=>{fetchTodosId (id)}
+        const fetchTodosId = async (id)=>{
 
             try {
                 dispatch(setLoadingTrue())
@@ -144,7 +196,15 @@ const data= await response.json();
 
       <div>
 <CreateTodoForm onSubmit={onTodoCreate}/>
-          <TodosList todos={todos} isLoading={isLoading} GetTodoId={GetTodoId}/>
+          <TodosList
+              todos={todos}
+              isLoading={isLoading}
+              GetTodoId={GetTodoId}
+              DeleteTodoId={DeleteTodoId}
+              onInputChangeTitle={onInputChangeTitle}
+              titleInputState={titleInputState}
+              editSubmit={editSubmit}
+          />
 
           </div>
 
