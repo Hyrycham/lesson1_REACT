@@ -51,17 +51,20 @@ const CreateTodoForm = ({onSubmit}) => {
 const TodosList = ({todos, isLoading, GetTodoId, DeleteTodoId, editSubmit}) => {
 
 
+    const [showForm, setShowForm] = useState('showOff')
+
     const [descriptionInputState, setDescriptionInputState] = useState('')
     const onInputChangeDescription = (e) => {
         console.log(e.target.value);
         setDescriptionInputState(e.target.value)
-    }
+    };
     // =================
     const [titleInputState, setTitleInputState] = useState('')
     const onInputChangeTitle = (e) => {
         console.log(e.target.value);
         setTitleInputState(e.target.value)
-    }
+    };
+
 
     if (isLoading) return <h1>LOADING....</h1>
     return (
@@ -89,8 +92,10 @@ const TodosList = ({todos, isLoading, GetTodoId, DeleteTodoId, editSubmit}) => {
                             }}> DELETE TODO Id:{todo.id} </button>
                         </div>
 
-
-                        <div>
+<button onClick={()=>{setShowForm('showOn')}}>
+        EDIT
+</button>
+                        <div className={showForm}>
                             <form onSubmit={() => editSubmit(todo.id, titleInputState, descriptionInputState)}>
                                 <input
                                     type={'text'}
@@ -105,6 +110,8 @@ const TodosList = ({todos, isLoading, GetTodoId, DeleteTodoId, editSubmit}) => {
                                 <button> save</button>
                             </form>
                         </div>
+
+
                     </div>
                 )
             )
@@ -119,8 +126,8 @@ const TodosList = ({todos, isLoading, GetTodoId, DeleteTodoId, editSubmit}) => {
 function App() {
     const {todos, isLoading} = useSelector(({todosReducer}) => todosReducer);
     const dispatch = useDispatch()
-// =================
 
+    // =================
     const editSubmit = async (id, title, description) => {
             const response = await fetch('http://localhost:8888/update-todo/' + id, {
             method: 'PATCH',
@@ -205,7 +212,7 @@ function App() {
                 GetTodoId={GetTodoId}
                 DeleteTodoId={DeleteTodoId}
                 editSubmit={editSubmit}
-            />
+                            />
         </div>
     );
 }
